@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { MessageSquare, User } from "lucide-react";
+import { Home, MessageSquare, User } from "lucide-react";
 import Link from "next/link";
 
 export function AppSidebar() {
@@ -16,6 +16,14 @@ export function AppSidebar() {
       <SidebarHeader />
       <SidebarContent>
         <SidebarMenu>
+          <SidebarMenuItem>
+            <Link href="/" passHref>
+              <SidebarMenuButton>
+                <Home className="h-5 w-5" />
+                Home
+              </SidebarMenuButton>
+            </Link>
+          </SidebarMenuItem>
           <SidebarMenuItem>
             <Link href="/m" passHref>
               <SidebarMenuButton>

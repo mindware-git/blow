@@ -1,18 +1,9 @@
+import { LoginForm } from "@/components/login-form";
+
 export default function LoginPage() {
   return (
     <div>
-      <h1>Login Page</h1>
-      <form>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      <LoginForm />
     </div>
   );
 }
