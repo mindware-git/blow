@@ -29,6 +29,10 @@ export default function CreatePostPage() {
               <Input id="text" placeholder="What's on your mind?" />
             </div>
             <div className="space-y-2">
+              <Label htmlFor="public">Public</Label>
+              <Input id="public" type="file" multiple />
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="images">Images</Label>
               <Input id="images" type="file" multiple />
             </div>
