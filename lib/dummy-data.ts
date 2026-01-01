@@ -124,16 +124,19 @@ export const dummyProfiles: Profile[] = [
 
 export type Threads = {
   id: string;
+  participant_ids: string[];
   created_at: string; // ISO 8601 format
 };
 
 export const dummyThreads: Threads[] = [
   {
     id: "1",
+    participant_ids: ["1", "2", "3"],
     created_at: "2023-05-20T09:55:00Z",
   },
   {
     id: "2",
+    participant_ids: ["1", "2"],
     created_at: "2023-05-20T11:25:00Z",
   },
 ];
