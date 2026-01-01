@@ -15,11 +15,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Post } from "@/lib/dummy-data";
+import { Posts } from "@/lib/dummy-data";
 import { Heart, MessageCircle, MoreHorizontal } from "lucide-react";
 
 type PostCardProps = {
-  post: Post;
+  post: Posts;
 };
 
 export function PostCard({ post }: PostCardProps) {
@@ -29,13 +29,10 @@ export function PostCard({ post }: PostCardProps) {
         <div className="flex items-center space-x-2">
           {/* Removed Avatar component */}
           <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-semibold">
-            {post.user.substring(0, 2).toUpperCase()}
+            {post.user_id.substring(0, 2).toUpperCase()}
           </div>
           <div>
-            <CardTitle className="text-sm">{post.user}</CardTitle>
-            <CardDescription className="text-xs">
-              {post.location}
-            </CardDescription>
+            <CardTitle className="text-sm">{post.user_id}</CardTitle>
           </div>
         </div>
         <CardAction>
@@ -45,12 +42,12 @@ export function PostCard({ post }: PostCardProps) {
       <CardContent className="p-0">
         <Carousel className="w-full">
           <CarouselContent>
-            {post.images.map((image, index) => (
+            {post.image_urls?.map((image, index) => (
               <CarouselItem key={index}>
                 <div className="relative w-full h-[400px]">
                   <Image
                     src={image}
-                    alt={`Post by ${post.user} - Image ${index + 1}`}
+                    alt={`Post by ${post.user_id} - Image ${index + 1}`}
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-t-lg"
@@ -70,12 +67,12 @@ export function PostCard({ post }: PostCardProps) {
         </div>
         <p className="text-sm font-semibold">{post.likes} likes</p>
         <p className="text-sm mt-1">
-          <span className="font-semibold">{post.user}</span> {post.caption}
+          <span className="font-semibold">{post.user_id}</span> {post.text}
         </p>
         <p className="text-xs text-gray-500 mt-1">
           View all {post.comments} comments
         </p>
-        <p className="text-xs text-gray-500 mt-1">{post.timestamp}</p>
+        <p className="text-xs text-gray-500 mt-1">{post.updated_at}</p>
       </CardFooter>
     </Card>
   );
