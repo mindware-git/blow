@@ -1,14 +1,14 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { dummyPosts, Post } from "@/lib/dummy-data";
+import { dummyPosts, Posts } from "@/lib/dummy-data";
 import { PostCard } from "@/components/post-card";
 
 export default function PostPage() {
   const params = useParams();
   const { post_id } = params;
 
-  const post: Post | undefined = dummyPosts.find((p) => p.id === post_id);
+  const post: Posts | undefined = dummyPosts.find((p) => p.id === post_id);
 
   if (!post) {
     return (
