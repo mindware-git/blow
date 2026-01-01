@@ -1,14 +1,24 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { dummyPosts, Posts } from "@/lib/dummy-data";
 import { PostCard } from "@/components/post-card";
+import { Posts } from "@/lib/dummy-data"; // We can reuse the type
+import fs from "fs";
+import path from "path";
 
-export default function PostPage() {
-  const params = useParams();
-  const { post_id } = params;
+type PostDetailResponse = {
+  status: string;
+  data: Posts;
+};
 
-  const post: Posts | undefined = dummyPosts.find((p) => p.id === post_id);
+// This function simulates fetching data for a specific post.
+// In a real app, it would take a postId and make an API call.
+async function getPostData(): Promise<PostDetailResponse> {
+  const filePath = path.join(process.cwd(), "lib", "post-detail.json");
+  const jsonData = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(jsonData);
+}
+
+export default async function PostPage() {
+  const postResponse = await getPostData();
+  const post = postResponse.data;
 
   if (!post) {
     return (

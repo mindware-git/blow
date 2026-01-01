@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "data": {
+    "nextPageToken": "CAUQAA",
+    "items": [
+      {
+        "postId": "vj0_L1S_7kE",
+        "url": "https://free-images.com/lg/2b9d/bird_wildlife_sky_clouds.jpg"
+      },
+      {
+        "postId": "a1b2c3d4e5F",
+        "url": "https://free-images.com/lg/f1bb/hiker_camp_tent_arctic.jpg"
+      },
+      {
+        "postId": "ZxYwVuTsRqP",
+        "url": "https://free-images.com/md/fc7f/adorable_animal_background_164489.jpg"
+      },
+      {
+        "postId": "LmNoPqRsTuV",
+        "url": "https://free-images.com/md/5c4e/mont_blanc_2005_118.jpg"
+      },
+      {
+        "postId": "GhIjKlMnOpQ",
+        "url": "https://free-images.com/md/3b8f/dalmatiner_schw_braun.jpg"
+      }
+    ]
+  }
+}
