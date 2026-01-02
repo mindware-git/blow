@@ -2,69 +2,33 @@ import { auth } from "@/auth";
 import { signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Profile } from "@/types/user";
-import { Post } from "@/types/post";
 import { SimplePostCard } from "@/components/simple-post-card";
+import { getProfileByUsername } from "@/lib/user";
+import { getPostsByUsername } from "@/lib/post";
+import { notFound } from "next/navigation";
 
 export default async function MyProfilePage() {
   const session = await auth();
 
-  if (!session?.user) {
+  if (!session?.user?.name) {
     redirect("/auth/signin");
   }
 
   const username = session.user.name;
 
-  // API 호출로 프로필 정보 가져오기
-  const profile: Profile = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/users/${username}`,
-    {
-      cache: "no-store", // SSR에서 항상 최신 데이터 가져오기
-    },
-  ).then((res) => res.json());
+  console.log(`[SSR] Fetching mock data for user: ${username}`);
 
-  // API 호출로 사용자 posts 가져오기
+  // Fetch profile and posts using the new SSR functions
+  const profile = await getProfileByUsername(username);
+  const posts = await getPostsByUsername(username);
 
-  console.log("Fetching username:", profile);
-  console.log("Fetching posts for username:", username);
+  // If no profile is found for the user, show a 404 page.
+  if (!profile) {
+    console.warn(`[SSR] Profile not found for user: ${username}`);
+    notFound();
+  }
 
-  const posts: Post[] = [];
-  // try {
-  //   const postsResponse = await fetch(
-  //     `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/posts/${username}`,
-  //     {
-  //       cache: "no-store", // SSR에서 항상 최신 데이터 가져오기
-  //     },
-  //   );
-
-  //   if (!postsResponse.ok) {
-  //     console.error(
-  //       "Posts API response not ok:",
-  //       postsResponse.status,
-  //       postsResponse.statusText,
-  //     );
-  //     throw new Error(`API call failed: ${postsResponse.status}`);
-  //   }
-
-  //   const data = await postsResponse.json();
-  //   console.log("Posts API response:", data);
-  //   posts = data.posts || [];
-  //   console.log("Final posts array:", posts);
-  // } catch (error) {
-  //   console.error("Error fetching posts:", error);
-  //   // 임시 테스트 데이터
-  //   posts = [
-  //     {
-  //       id: "test_1",
-  //       userId: username,
-  //       likes: 10,
-  //       comments: 5,
-  //       updatedAt: new Date().toISOString(),
-  //       text: "테스트 포스트 - API 호출 실패 시 임시 데이터",
-  //       mediaUrls: ["https://free-images.com/lg/d7e1/bailando.jpg"],
-  //     },
-  //   ];
-  // }
+  console.log(`[SSR] Loaded profile and ${posts.length} posts for ${username}.`);
 
   return (
     <div className="flex">

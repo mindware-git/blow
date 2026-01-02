@@ -35,23 +35,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           };
         }
 
-        console.log(
-          "Authentication successful - returning test user for development",
-        );
-        // 실제로는 여기서 FastAPI 서버로 요청 보내야 함
-        // const response = await fetch("http://localhost:8000/auth/login", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify(credentials)
-        // });
-        // const user = await response.json();
-        // return user ? user : null;
-
-        return {
-          id: "test-user-id",
-          email: email || "test@example.com",
-          name: "TestUser",
-        };
+        console.log("Authentication failed - returning null");
+        return null; // Return null for failed authentication
       },
     }),
   ],
