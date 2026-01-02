@@ -38,20 +38,20 @@ export default async function UserProfilePage({
 }: {
   params: { user_url: string };
 }) {
-  const profileResponse = await getProfileData(params.user_url);
-  const userProfile = profileResponse.data;
+  // const profileResponse = await getProfileData(params.user_url);
+  // const userProfile = profileResponse.data;
 
-  if (!userProfile) {
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold">Profile not found</h1>
-      </main>
-    );
-  }
+  // if (!userProfile) {
+  //   return (
+  //     <main className="flex min-h-screen flex-col items-center justify-center">
+  //       <h1 className="text-2xl font-bold">Profile not found</h1>
+  //     </main>
+  //   );
+  // }
 
   return (
     <main className="container mx-auto p-4">
-      <header className="flex items-center space-x-8 mb-8">
+      {/* <header className="flex items-center space-x-8 mb-8">
         <Avatar className="w-32 h-32">
           <AvatarImage src={userProfile.avatarUrl} alt={userProfile.username} />
           <AvatarFallback>
@@ -101,7 +101,7 @@ export default async function UserProfilePage({
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
     </main>
   );
 }
