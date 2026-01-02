@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "@/auth";
 
 type FeedItem = {
   postId: string;
@@ -23,16 +24,25 @@ async function getFeedData(): Promise<FeedData> {
 }
 
 export default async function Home() {
+  const session = await auth();
   const feedData = await getFeedData();
   const { items } = feedData.data;
 
+  // 사용자 이름 결정
+  const getGreeting = () => {
+    if (session?.user?.name) {
+      return `${session.user.name}'s Feed`;
+    }
+    return "Your Feed";
+  };
+
   return (
-    <div className="w-screen -ml-64 pl-64">
-      <h1 className="text-3xl font-bold my-4">Your Feed</h1>
-      <div className="grid grid-cols-3 gap-2">
+    <div className="flex flex-1 flex-col gap-4 p-4">
+      <h1 className="text-3xl font-bold">{getGreeting()}</h1>
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {items.map((item) => (
           <Link href={`/p/${item.postId}`} key={item.postId}>
-            <div className="relative w-full h-96 overflow-hidden">
+            <div className="relative w-full h-96 overflow-hidden rounded-lg">
               <Image
                 src={item.url}
                 alt={`Post ${item.postId}`}
@@ -43,7 +53,7 @@ export default async function Home() {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
