@@ -1,4 +1,4 @@
-import { Profile } from "@/types/user";
+import { User, Profile } from "@/types/user";
 
 /**
  * Fetches a mock user profile from a hardcoded source.
@@ -9,19 +9,176 @@ import { Profile } from "@/types/user";
 export async function getProfileByUsername(
   username: string,
 ): Promise<Profile | null> {
-  // In a real application, this would fetch from a database or an API.
-  // For now, we return a hardcoded mock profile for "TestUser".
-  if (username === "TestUser") {
-    const mockProfile: Profile = {
-      username: "TestUser",
-      avatar: "https://free-images.com/lg/d7e1/bailando.jpg", // Placeholder avatar
-      bio: "This is a mock bio for TestUser. I love building cool stuff with Next.js!",
-      postsCount: 5, // Example value
-      followersCount: 150, // Example value
-      followingCount: 75, // Example value
-    };
-    return mockProfile;
+  const data = users.find((u) => u.profile.username === username);
+  if (data) {
+    return data.profile;
   }
 
   return null;
 }
+
+export const users: Array<{
+  user: User;
+  profile: Profile;
+}> = [
+  {
+    user: {
+      id: "u_001",
+      email: "aria.kim@example.com",
+      createdAt: "2025-01-02T09:12:00Z",
+      updatedAt: "2025-01-10T14:30:00Z",
+    },
+    profile: {
+      username: "aria",
+      avatar: "https://i.postimg.cc/sXScNL2w/aria.png",
+      bio: "Product designer who loves minimalism and coffee.",
+      postsCount: 34,
+      followersCount: 1200,
+      followingCount: 180,
+    },
+  },
+  {
+    user: {
+      id: "u_002",
+      email: "sofia.rossi@example.com",
+      createdAt: "2025-01-03T11:45:00Z",
+      updatedAt: "2025-01-11T08:20:00Z",
+    },
+    profile: {
+      username: "sofiar",
+      avatar: "https://i.postimg.cc/hzDTJpTm/sofiar.png",
+      bio: "Fashion and lifestyle creator based in Milan.",
+      postsCount: 58,
+      followersCount: 3420,
+      followingCount: 410,
+    },
+  },
+  {
+    user: {
+      id: "u_003",
+      email: "maya.patel@example.com",
+      createdAt: "2025-01-04T07:30:00Z",
+      updatedAt: "2025-01-12T10:05:00Z",
+    },
+    profile: {
+      username: "mayap",
+      avatar: "https://i.postimg.cc/cgxwKXww/mayap.png",
+      bio: "Startup marketer. Growth, data, and storytelling.",
+      postsCount: 21,
+      followersCount: 980,
+      followingCount: 260,
+    },
+  },
+  {
+    user: {
+      id: "u_004",
+      email: "lina.garcia@example.com",
+      createdAt: "2025-01-05T15:10:00Z",
+      updatedAt: "2025-01-13T09:50:00Z",
+    },
+    profile: {
+      username: "lina",
+      avatar: "https://example.com/avatars/lina.jpg",
+      bio: "Photographer capturing everyday beauty.",
+      postsCount: 76,
+      followersCount: 5100,
+      followingCount: 600,
+    },
+  },
+  {
+    user: {
+      id: "u_005",
+      email: "yuki.tanaka@example.com",
+      createdAt: "2025-01-06T02:40:00Z",
+      updatedAt: "2025-01-14T12:15:00Z",
+    },
+    profile: {
+      username: "yukit",
+      avatar: "https://example.com/avatars/yuki.jpg",
+      bio: "Illustrator and indie game art enthusiast.",
+      postsCount: 44,
+      followersCount: 2300,
+      followingCount: 310,
+    },
+  },
+  {
+    user: {
+      id: "u_006",
+      email: "amina.hassan@example.com",
+      createdAt: "2025-01-07T18:05:00Z",
+      updatedAt: "2025-01-15T16:00:00Z",
+    },
+    profile: {
+      username: "amina",
+      avatar: "https://example.com/avatars/amina.jpg",
+      bio: "UX researcher passionate about human-centered design.",
+      postsCount: 19,
+      followersCount: 870,
+      followingCount: 140,
+    },
+  },
+  {
+    user: {
+      id: "u_007",
+      email: "emma.wilson@example.com",
+      createdAt: "2025-01-08T10:00:00Z",
+      updatedAt: "2025-01-16T11:45:00Z",
+    },
+    profile: {
+      username: "emmaw",
+      avatar: "https://example.com/avatars/emma.jpg",
+      bio: "Remote worker sharing productivity tips.",
+      postsCount: 62,
+      followersCount: 4100,
+      followingCount: 520,
+    },
+  },
+  {
+    user: {
+      id: "u_008",
+      email: "nora.berg@example.com",
+      createdAt: "2025-01-09T06:55:00Z",
+      updatedAt: "2025-01-17T13:25:00Z",
+    },
+    profile: {
+      username: "norab",
+      avatar: "https://example.com/avatars/nora.jpg",
+      bio: "Tech writer exploring AI and creativity.",
+      postsCount: 28,
+      followersCount: 1500,
+      followingCount: 230,
+    },
+  },
+  {
+    user: {
+      id: "u_009",
+      email: "daniel.miller@example.com",
+      createdAt: "2025-01-10T09:20:00Z",
+      updatedAt: "2025-01-18T17:10:00Z",
+    },
+    profile: {
+      username: "danielm",
+      avatar: "https://example.com/avatars/daniel.jpg",
+      bio: "Backend engineer. APIs, databases, scalability.",
+      postsCount: 15,
+      followersCount: 640,
+      followingCount: 120,
+    },
+  },
+  {
+    user: {
+      id: "u_010",
+      email: "leo.santos@example.com",
+      createdAt: "2025-01-11T14:35:00Z",
+      updatedAt: "2025-01-19T08:40:00Z",
+    },
+    profile: {
+      username: "leos",
+      avatar: "https://example.com/avatars/leo.jpg",
+      bio: "Indie maker building small but useful products.",
+      postsCount: 23,
+      followersCount: 910,
+      followingCount: 200,
+    },
+  },
+];
