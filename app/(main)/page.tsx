@@ -1,32 +1,11 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { auth } from "@/auth";
-
-type FeedItem = {
-  postId: string;
-  url: string;
-};
-
-type FeedData = {
-  status: string;
-  data: {
-    nextPageToken: string;
-    items: FeedItem[];
-  };
-};
-
-async function getFeedData(): Promise<FeedData> {
-  const filePath = path.join(process.cwd(), "lib", "feed.json");
-  const jsonData = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(jsonData);
-}
+import { getFeed } from "@/lib/feed";
 
 export default async function Home() {
   const session = await auth();
-  const feedData = await getFeedData();
-  const { items } = feedData.data;
+  const feedItems = await getFeed();
 
   // 사용자 이름 결정
   const getGreeting = () => {
@@ -39,12 +18,12 @@ export default async function Home() {
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
       <h1 className="text-3xl font-bold">{getGreeting()}</h1>
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((item) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {feedItems.map((item) => (
           <Link href={`/p/${item.postId}`} key={item.postId}>
             <div className="relative w-full h-96 overflow-hidden rounded-lg">
               <Image
-                src={item.url}
+                src={item.mediaUrl}
                 alt={`Post ${item.postId}`}
                 fill
                 style={{ objectFit: "cover" }}
@@ -53,7 +32,7 @@ export default async function Home() {
             </div>
           </Link>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }
