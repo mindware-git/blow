@@ -296,6 +296,114 @@ export const mockPosts: Post[] = [
     text: "It's all in the details. Loving the typography in the new @AwesomeApp update. #uidesign #typography #inspiration",
     mediaUrls: ["https://i.postimg.cc/hG06C0yW/aria-post2.png"],
   },
+  {
+    id: "post33",
+    userId: "u_011", // lincoln
+    likes: 1865,
+    comments: 150,
+    updatedAt: new Date(Date.now() - 32 * 86400000).toISOString(),
+    text: "Four score and seven years ago... forever grateful for the opportunity to serve this great nation. #GettysburgAddress #history #USA",
+    mediaUrls: ["https://i.postimg.cc/pr0T0y2Y/lincoln-post1.png"],
+  },
+  {
+    id: "post34",
+    userId: "u_011", // lincoln
+    likes: 1863,
+    comments: 200,
+    updatedAt: new Date(Date.now() - 33 * 86400000).toISOString(),
+    text: "A new dawn for freedom. The Emancipation Proclamation is signed, paving the way for a more just society. #Emancipation #Freedom #CivilWar",
+    mediaUrls: ["https://i.postimg.cc/r7Q9X1xG/lincoln-post2.png"],
+  },
+  {
+    id: "post35",
+    userId: "u_012", // sejong
+    likes: 1443,
+    comments: 300,
+    updatedAt: new Date(Date.now() - 34 * 86400000).toISOString(),
+    text: "새로운 글자를 창제하니, 모든 백성이 쉽게 배우고 쓸 수 있기를. 훈민정음 반포! #한글 #세종대왕 #문화유산",
+    mediaUrls: ["https://i.postimg.cc/sX4S1yY2/sejong-post1.png"],
+  },
+  {
+    id: "post36",
+    userId: "u_012", // sejong
+    likes: 1450,
+    comments: 180,
+    updatedAt: new Date(Date.now() - 35 * 86400000).toISOString(),
+    text: "Honoring the celestial movements with new astronomical instruments. Science guides our path. #천문학 #과학 #장영실",
+    mediaUrls: ["https://i.postimg.cc/B3C0K9X2/sejong-post2.png"],
+  },
+  {
+    id: "post37",
+    userId: "u_013", // guanyu
+    likes: 220,
+    comments: 50,
+    updatedAt: new Date(Date.now() - 36 * 86400000).toISOString(),
+    text: "Sworn brothers, bound by oath. Loyalty unto death. #삼국지 #의리 #형제",
+    mediaUrls: ["https://i.postimg.cc/qZ8X3yY2/guanyu-post1.png"],
+  },
+  {
+    id: "post38",
+    userId: "u_013", // guanyu
+    likes: 219,
+    comments: 60,
+    updatedAt: new Date(Date.now() - 37 * 86400000).toISOString(),
+    text: "With my Green Dragon Crescent Blade, victory shall be ours! For the Han! #전투 #장군 #촉한",
+    mediaUrls: ["https://i.postimg.cc/C8B0J9X2/guanyu-post2.png"],
+  },
+  {
+    id: "post39",
+    userId: "u_014", // newton
+    likes: 1687,
+    comments: 100,
+    updatedAt: new Date(Date.now() - 38 * 86400000).toISOString(),
+    text: "An apple a day keeps the questions at bay... or rather, inspires new ones about gravity. #Gravity #Physics #Discovery",
+    mediaUrls: ["https://i.postimg.cc/h9M0L2X2/newton-post1.png"],
+  },
+  {
+    id: "post40",
+    userId: "u_014", // newton
+    likes: 1686,
+    comments: 90,
+    updatedAt: new Date(Date.now() - 39 * 86400000).toISOString(),
+    text: "Finished the 'Principia Mathematica'. Hoping to shed light on the natural philosophy of our universe. #Principia #Mathematics #Science",
+    mediaUrls: ["https://i.postimg.cc/N6K2M9X2/newton-post2.png"],
+  },
+  {
+    id: "post41",
+    userId: "u_015", // curie
+    likes: 1903,
+    comments: 120,
+    updatedAt: new Date(Date.now() - 40 * 86400000).toISOString(),
+    text: "Working tirelessly in the lab. The mysteries of radioactivity are slowly revealing themselves. #Radioactivity #Science #Pioneering",
+    mediaUrls: ["https://i.postimg.cc/L7P4Q1W2/curie-post1.png"],
+  },
+  {
+    id: "post42",
+    userId: "u_015", // curie
+    likes: 1911,
+    comments: 150,
+    updatedAt: new Date(Date.now() - 41 * 86400000).toISOString(),
+    text: "Honored with my second Nobel Prize! Dedicating this to all women in science. #NobelPrize #WomenInScience #Determination",
+    mediaUrls: ["https://i.postimg.cc/J2R6S3X2/curie-post2.png"],
+  },
+  {
+    id: "post43",
+    userId: "u_016", // sunsin
+    likes: 1592,
+    comments: 70,
+    updatedAt: new Date(Date.now() - 42 * 86400000).toISOString(),
+    text: "Against all odds, the Turtle Ship prevails! For the defense of Joseon! #거북선 #이순신 #해전",
+    mediaUrls: ["https://i.postimg.cc/P9T8U5W2/sunsin-post1.png"],
+  },
+  {
+    id: "post44",
+    userId: "u_016", // sunsin
+    likes: 1598,
+    comments: 80,
+    updatedAt: new Date(Date.now() - 43 * 86400000).toISOString(),
+    text: "Yet another victory at sea. We will protect our land and people. #명량 #한산도 #성웅이순신",
+    mediaUrls: ["https://i.postimg.cc/V1W0X7Y2/sunsin-post2.png"],
+  },
 ];
 
 /**

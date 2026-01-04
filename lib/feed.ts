@@ -9,7 +9,7 @@ import { mockPosts } from "./post";
 export async function getFeed(): Promise<Feed[]> {
   const feed: Feed[] = mockPosts.map((post) => ({
     postId: post.id,
-    mediaUrl: post.mediaUrls[0],
+    mediaUrl: post.mediaUrls![0],
   }));
 
   return feed;

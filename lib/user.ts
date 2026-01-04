@@ -181,4 +181,100 @@ export const users: Array<{
       followingCount: 200,
     },
   },
+  {
+    user: {
+      id: "u_011",
+      email: "abraham.lincoln@example.com",
+      createdAt: "2025-01-20T10:00:00Z",
+      updatedAt: "2025-01-20T10:00:00Z",
+    },
+    profile: {
+      username: "lincoln",
+      avatar: "https://i.postimg.cc/13ZtYpC3/lincoln.png",
+      bio: "16th President of the United States. Preserved the Union, abolished slavery.",
+      postsCount: 5,
+      followersCount: 1865000,
+      followingCount: 1,
+    },
+  },
+  {
+    user: {
+      id: "u_012",
+      email: "king.sejong@example.com",
+      createdAt: "2025-01-21T10:00:00Z",
+      updatedAt: "2025-01-21T10:00:00Z",
+    },
+    profile: {
+      username: "sejong",
+      avatar: "https://i.postimg.cc/NMyyV1Fh/sejong.png",
+      bio: "4th King of Joseon. Creator of Hangul, the Korean alphabet.",
+      postsCount: 1443,
+      followersCount: 10000000,
+      followingCount: 25,
+    },
+  },
+  {
+    user: {
+      id: "u_013",
+      email: "guan.yu@example.com",
+      createdAt: "2025-01-22T10:00:00Z",
+      updatedAt: "2025-01-22T10:00:00Z",
+    },
+    profile: {
+      username: "guanyu",
+      avatar: "https://i.postimg.cc/L5Y3gZz7/guanyu.png",
+      bio: "General serving under Liu Bei. Embodiment of loyalty and righteousness.",
+      postsCount: 3,
+      followersCount: 500000,
+      followingCount: 2,
+    },
+  },
+  {
+    user: {
+      id: "u_014",
+      email: "isaac.newton@example.com",
+      createdAt: "2025-01-23T10:00:00Z",
+      updatedAt: "2025-01-23T10:00:00Z",
+    },
+    profile: {
+      username: "newton",
+      avatar: "https://i.postimg.cc/C1R2S1yY/newton.png",
+      bio: "Physicist, mathematician, astronomer. Laid the foundations for classical mechanics.",
+      postsCount: 3,
+      followersCount: 1687000,
+      followingCount: 0,
+    },
+  },
+  {
+    user: {
+      id: "u_015",
+      email: "marie.curie@example.com",
+      createdAt: "2025-01-24T10:00:00Z",
+      updatedAt: "2025-01-24T10:00:00Z",
+    },
+    profile: {
+      username: "curie",
+      avatar: "https://i.postimg.cc/J0b6D3gM/curie.png",
+      bio: "Physicist and chemist who conducted pioneering research on radioactivity.",
+      postsCount: 2,
+      followersCount: 1900000,
+      followingCount: 1,
+    },
+  },
+  {
+    user: {
+      id: "u_016",
+      email: "yi.sunsin@example.com",
+      createdAt: "2025-01-25T10:00:00Z",
+      updatedAt: "2025-01-25T10:00:00Z",
+    },
+    profile: {
+      username: "sunsin",
+      avatar: "https://i.postimg.cc/vB7gXzY9/sunsin.png",
+      bio: "Korean admiral and military general famed for his victories against the Japanese navy.",
+      postsCount: 23,
+      followersCount: 1200000,
+      followingCount: 0,
+    },
+  },
 ];
