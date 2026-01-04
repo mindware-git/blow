@@ -5,7 +5,7 @@ export interface Post {
   comments: number;
   updatedAt: string; // ISO 8601 format
   text?: string;
-  mediaUrls?: string[];
+  mediaUrls: string[]; // Changed from optional to required
 }
 
 export interface Comment {

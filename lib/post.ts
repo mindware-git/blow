@@ -1,26 +1,300 @@
 import { Post } from "@/types/post";
+import { users } from "./user";
 
-const mockPosts: Post[] = [
+export const mockPosts: Post[] = [
   {
     id: "post1",
-    userId: "test-user-id",
+    userId: "u_007", // emmaw
     likes: 15,
     comments: 4,
-    updatedAt: new Date().toISOString(),
+    updatedAt: new Date(Date.now() - 12 * 3600 * 1000).toISOString(), // 12 hours ago
     text: "This is the first mock post from our new SSR function! 🎉",
-    mediaUrls: ["https://free-images.com/lg/d7e1/bailando.jpg"],
+    mediaUrls: ["https://i.postimg.cc/pXW5RjV3/emmw-post1.png"],
   },
   {
     id: "post2",
-    userId: "test-user-id",
+    userId: "u_007", // emmaw
     likes: 32,
     comments: 8,
     updatedAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
-    text: "Here is another post, created specifically for TestUser.",
+    text: "My top 3 tips for staying focused while working from home: 1. Time blocking. 2. Dedicated workspace. 3. Regular breaks. What are yours? #remotework #productivity",
     mediaUrls: [
-      "https://free-images.com/lg/d7e1/bailando.jpg",
-      "https://free-images.com/lg/d7e1/bailando.jpg",
+      "https://i.postimg.cc/pXW5RjV3/emmw-post1.png",
+      "https://i.postimg.cc/pXW5RjV3/emmw-post1.png",
     ],
+  },
+  {
+    id: "post3",
+    userId: "u_001", // aria
+    likes: 52,
+    comments: 11,
+    updatedAt: new Date(Date.now() - 2 * 86400000).toISOString(), // 2 days ago
+    text: "Morning coffee and sketching out some new minimalist UI components. The perfect start to a productive day. #uidesign #minimalism #coffee",
+    mediaUrls: ["https://i.postimg.cc/sXScNL2w/aria.png"],
+  },
+  {
+    id: "post4",
+    userId: "u_002", // sofiar
+    likes: 342,
+    comments: 45,
+    updatedAt: new Date(Date.now() - 3 * 86400000).toISOString(), // 3 days ago
+    text: "Absolutely in love with this season's color palette. So many beautiful textures and tones to play with. #fashion #milanfashion #ootd",
+    mediaUrls: ["https://i.postimg.cc/hzDTJpTm/sofiar.png"],
+  },
+  {
+    id: "post5",
+    userId: "u_003", // mayap
+    likes: 28,
+    comments: 7,
+    updatedAt: new Date(Date.now() - 4 * 86400000).toISOString(), // 4 days ago
+    text: "Just crunched the numbers on our latest campaign. The data tells a fascinating story. Storytelling with data is a marketer's superpower. #marketing #growthhacking #data",
+    mediaUrls: ["https://i.postimg.cc/cgxwKXww/mayap.png"],
+  },
+  {
+    id: "post6",
+    userId: "u_004", // lina
+    likes: 510,
+    comments: 68,
+    updatedAt: new Date(Date.now() - 5 * 86400000).toISOString(), // 5 days ago
+    text: "Golden hour did not disappoint today. The light was just magical. #photography #goldenhour #landscape",
+    mediaUrls: ["https://i.postimg.cc/6pLSbLdY/lina-post1.png"],
+  },
+  {
+    id: "post7",
+    userId: "u_005", // yukit
+    likes: 180,
+    comments: 23,
+    updatedAt: new Date(Date.now() - 6 * 86400000).toISOString(), // 6 days ago
+    text: "Working on a new character concept for an upcoming indie game. I'm so excited about this project's art style! #gamedev #illustration #characterdesign",
+    mediaUrls: ["https://i.postimg.cc/rsP3Sj9G/yukit-post1.png"],
+  },
+  {
+    id: "post8",
+    userId: "u_006", // amina
+    likes: 22,
+    comments: 5,
+    updatedAt: new Date(Date.now() - 7 * 86400000).toISOString(), // 7 days ago
+    text: "Just wrapped up a series of user interviews. It's always so insightful to hear directly from the people we're designing for. #uxresearch #humancentereddesign",
+    mediaUrls: ["https://i.postimg.cc/WpD332D5/amina-post1.png"],
+  },
+  {
+    id: "post9",
+    userId: "u_008", // norab
+    likes: 45,
+    comments: 15,
+    updatedAt: new Date(Date.now() - 8 * 86400000).toISOString(), // 8 days ago
+    text: "Exploring the intersection of generative AI and creative writing. The possibilities are both exciting and a little scary. It's a whole new frontier for storytelling. #ai #creativity #tech",
+    mediaUrls: ["https://i.postimg.cc/d11S0s92/norab-post1.png"],
+  },
+  {
+    id: "post10",
+    userId: "u_009", // danielm
+    likes: 35,
+    comments: 9,
+    updatedAt: new Date(Date.now() - 9 * 86400000).toISOString(), // 9 days ago
+    text: "Just deployed a new microservice. The satisfaction of clean code and a smooth deployment is unbeatable. #backend #developer #api",
+    mediaUrls: ["https://i.postimg.cc/RVT0S2v7/danielm-post1.png"],
+  },
+  {
+    id: "post11",
+    userId: "u_010", // leos
+    likes: 31,
+    comments: 8,
+    updatedAt: new Date(Date.now() - 10 * 86400000).toISOString(), // 10 days ago
+    text: "Shipped a small update for my side project today! It's just a tiny tool, but I love building things that people find useful. #indiehackers #buildinpublic",
+    mediaUrls: ["https://i.postimg.cc/d1D0NMj9/leos-post1.png"],
+  },
+  {
+    id: "post12",
+    userId: "u_001", // aria
+    likes: 65,
+    comments: 18,
+    updatedAt: new Date(Date.now() - 11 * 86400000).toISOString(), // 11 days ago
+    text: "Finding beauty in simplicity. My design philosophy in one picture. #minimaldesign #productdesign",
+    mediaUrls: ["https://i.postimg.cc/sXScNL2w/aria.png"],
+  },
+  {
+    id: "post13",
+    userId: "u_002", // sofiar
+    likes: 412,
+    comments: 55,
+    updatedAt: new Date(Date.now() - 12 * 86400000).toISOString(),
+    text: "An evening in Brera. The food here is as much a work of art as the city itself. 🍝 #milan #lifestyle #foodie",
+    mediaUrls: ["https://i.postimg.cc/8zW3Yy1j/sofiar-post2.png"],
+  },
+  {
+    id: "post14",
+    userId: "u_004", // lina
+    likes: 620,
+    comments: 80,
+    updatedAt: new Date(Date.now() - 13 * 86400000).toISOString(),
+    text: "There's a certain melancholy beauty to a rainy day in the city. #streetphotography #blackandwhite #mood",
+    mediaUrls: ["https://i.postimg.cc/Wb0B4Qwn/lina-post2.png"],
+  },
+  {
+    id: "post15",
+    userId: "u_007", // emmaw
+    likes: 95,
+    comments: 22,
+    updatedAt: new Date(Date.now() - 14 * 86400000).toISOString(),
+    text: "Planning my week is my Sunday ritual. Sets me up for a productive and stress-free week ahead. #productivity #planning #remotework",
+    mediaUrls: ["https://i.postimg.cc/mD3mXm9g/emmaw-post2.png"],
+  },
+  {
+    id: "post16",
+    userId: "u_003", // mayap
+    likes: 42,
+    comments: 12,
+    updatedAt: new Date(Date.now() - 15 * 86400000).toISOString(),
+    text: "Love seeing these numbers go up and to the right! Our latest content strategy is paying off. #growthmarketing #startup #data",
+    mediaUrls: ["https://i.postimg.cc/x8P8MBP9/mayap-post2.png"],
+  },
+  {
+    id: "post17",
+    userId: "u_005", // yukit
+    likes: 210,
+    comments: 34,
+    updatedAt: new Date(Date.now() - 16 * 86400000).toISOString(),
+    text: "Sometimes you just have to go back to basics. Pencil and paper. #sketchbook #traditionalart #illustration",
+    mediaUrls: ["https://i.postimg.cc/tCNxT2xW/yukit-post2.png"],
+  },
+  {
+    id: "post18",
+    userId: "u_008", // norab
+    likes: 58,
+    comments: 18,
+    updatedAt: new Date(Date.now() - 17 * 86400000).toISOString(),
+    text: "Asked an AI to visualize 'creative thought'. The result is fascinatingly complex. #generativeart #aiart #creativity",
+    mediaUrls: ["https://i.postimg.cc/j2q3N2T2/norab-post2.png"],
+  },
+  {
+    id: "post19",
+    userId: "u_001", // aria
+    likes: 88,
+    comments: 24,
+    updatedAt: new Date(Date.now() - 18 * 86400000).toISOString(),
+    text: "A clean space for a clear mind. My minimalist workspace setup. #workspace #minimalism #design",
+    mediaUrls: ["https://i.postimg.cc/hG06C0yW/aria-post2.png"],
+  },
+  {
+    id: "post20",
+    userId: "u_006", // amina
+    likes: 35,
+    comments: 9,
+    updatedAt: new Date(Date.now() - 19 * 86400000).toISOString(),
+    text: "Mapping out user journeys today. The organized chaos of affinity diagramming. #uxresearch #designthinking #ux",
+    mediaUrls: ["https://i.postimg.cc/WpD332D5/amina-post1.png"],
+  },
+  {
+    id: "post21",
+    userId: "u_010", // leos
+    likes: 45,
+    comments: 14,
+    updatedAt: new Date(Date.now() - 20 * 86400000).toISOString(),
+    text: "Woke up to this amazing feedback from a user. This is why I build. ❤️ #indieacker #buildinpublic #motivation",
+    mediaUrls: ["https.postimg.cc/S_S/leos-post2.png"],
+  },
+  {
+    id: "post22",
+    userId: "u_009", // danielm
+    likes: 51,
+    comments: 11,
+    updatedAt: new Date(Date.now() - 21 * 86400000).toISOString(),
+    text: "That feeling when all 348 tests pass on the first try. A good day. #coding #backend #testing",
+    mediaUrls: ["https://i.postimg.cc/RVT0S2v7/danielm-post1.png"],
+  },
+  {
+    id: "post23",
+    userId: "u_004", // lina
+    likes: 710,
+    comments: 95,
+    updatedAt: new Date(Date.now() - 22 * 86400000).toISOString(),
+    text: "Found this tiny world of details on my morning walk. #macrophotography #nature #beauty",
+    mediaUrls: ["https://i.postimg.cc/k4xT42S9/lina-post3.png"],
+  },
+  {
+    id: "post24",
+    userId: "u_002", // sofiar
+    likes: 530,
+    comments: 68,
+    updatedAt: new Date(Date.now() - 23 * 86400000).toISOString(),
+    text: "Today's look for Milan Fashion Week. Mixing classic and modern pieces. #mfw #ootd #fashionblogger",
+    mediaUrls: [
+      "https://i.postimg.cc/8zW3Yy1j/sofiar-post2.png",
+      "https://i.postimg.cc/hzDTJpTm/sofiar.png",
+    ],
+  },
+  {
+    id: "post25",
+    userId: "u_007", // emmaw
+    likes: 110,
+    comments: 28,
+    updatedAt: new Date(Date.now() - 24 * 86400000).toISOString(),
+    text: "Found a new favorite 'coffice' to work from today. Changing scenery can be a huge creativity booster. #digitalnomad #wfh",
+    mediaUrls: ["https://i.postimg.cc/pXW5RjV3/emmw-post1.png"],
+  },
+  {
+    id: "post26",
+    userId: "u_005", // yukit
+    likes: 240,
+    comments: 40,
+    updatedAt: new Date(Date.now() - 25 * 86400000).toISOString(),
+    text: "A little time-lapse of my latest character sketch. #digitalart #procreate #characterdesign",
+    mediaUrls: ["https://i.postimg.cc/rsP3Sj9G/yukit-post1.png"],
+  },
+  {
+    id: "post27",
+    userId: "u_003", // mayap
+    likes: 60,
+    comments: 15,
+    updatedAt: new Date(Date.now() - 26 * 86400000).toISOString(),
+    text: "Had a great time sharing insights on data-driven storytelling today. Thanks for having me, @TechConference! #publicspeaking #marketing",
+    mediaUrls: ["https://i.postimg.cc/x8P8MBP9/mayap-post2.png"],
+  },
+  {
+    id: "post28",
+    userId: "u_009", // danielm
+    likes: 62,
+    comments: 16,
+    updatedAt: new Date(Date.now() - 27 * 86400000).toISOString(),
+    text: "Whiteboarding the new service architecture. Simplicity is the ultimate sophistication, even in system design. #softwarearchitecture #engineering",
+    mediaUrls: ["https://i.postimg.cc/RVT0S2v7/danielm-post1.png"],
+  },
+  {
+    id: "post29",
+    userId: "u_010", // leos
+    likes: 55,
+    comments: 20,
+    updatedAt: new Date(Date.now() - 28 * 86400000).toISOString(),
+    text: "Late night grind on the next feature. It's not glamorous, but it's rewarding. #solopreneur #maker",
+    mediaUrls: ["https://i.postimg.cc/d1D0NMj9/leos-post1.png"],
+  },
+  {
+    id: "post30",
+    userId: "u_006", // amina
+    likes: 48,
+    comments: 12,
+    updatedAt: new Date(Date.now() - 29 * 86400000).toISOString(),
+    text: "Observing how people interact with our prototype in the wild. This is where the real insights happen. #usabilitytesting #research",
+    mediaUrls: ["https://i.postimg.cc/WpD332D5/amina-post1.png"],
+  },
+  {
+    id: "post31",
+    userId: "u_008", // norab
+    likes: 72,
+    comments: 25,
+    updatedAt: new Date(Date.now() - 30 * 86400000).toISOString(),
+    text: "Diving into some classic sci-fi for inspiration on my next piece about AI ethics. #scifi #reading #ai",
+    mediaUrls: ["https://i.postimg.cc/d11S0s92/norab-post1.png"],
+  },
+  {
+    id: "post32",
+    userId: "u_001", // aria
+    likes: 105,
+    comments: 30,
+    updatedAt: new Date(Date.now() - 31 * 86400000).toISOString(),
+    text: "It's all in the details. Loving the typography in the new @AwesomeApp update. #uidesign #typography #inspiration",
+    mediaUrls: ["https://i.postimg.cc/hG06C0yW/aria-post2.png"],
   },
 ];
 
@@ -31,9 +305,9 @@ const mockPosts: Post[] = [
  * @returns A promise that resolves to an array of posts.
  */
 export async function getPostsByUsername(username: string): Promise<Post[]> {
-  // For now, we return hardcoded mock posts if the username is "TestUser".
-  if (username === "TestUser") {
-    return mockPosts.filter((p) => p.userId === "test-user-id");
+  const userData = users.find((u) => u.profile.username === username);
+  if (userData) {
+    return mockPosts.filter((p) => p.userId === userData.user.id);
   }
 
   return [];
