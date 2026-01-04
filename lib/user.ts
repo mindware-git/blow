@@ -78,7 +78,7 @@ export const users: Array<{
     },
     profile: {
       username: "lina",
-      avatar: "https://example.com/avatars/lina.jpg",
+      avatar: "https://i.postimg.cc/3WDRBcm7/lina.png",
       bio: "Photographer capturing everyday beauty.",
       postsCount: 76,
       followersCount: 5100,
@@ -94,7 +94,7 @@ export const users: Array<{
     },
     profile: {
       username: "yukit",
-      avatar: "https://example.com/avatars/yuki.jpg",
+      avatar: "https://i.postimg.cc/hh7jr5Tv/yukit.png",
       bio: "Illustrator and indie game art enthusiast.",
       postsCount: 44,
       followersCount: 2300,
@@ -110,7 +110,7 @@ export const users: Array<{
     },
     profile: {
       username: "amina",
-      avatar: "https://example.com/avatars/amina.jpg",
+      avatar: "https://i.postimg.cc/Yjm93sYw/amina.png",
       bio: "UX researcher passionate about human-centered design.",
       postsCount: 19,
       followersCount: 870,
@@ -126,7 +126,7 @@ export const users: Array<{
     },
     profile: {
       username: "emmaw",
-      avatar: "https://example.com/avatars/emma.jpg",
+      avatar: "https://i.postimg.cc/Bt16gVH9/emmaw.png",
       bio: "Remote worker sharing productivity tips.",
       postsCount: 62,
       followersCount: 4100,
@@ -190,7 +190,7 @@ export const users: Array<{
     },
     profile: {
       username: "lincoln",
-      avatar: "https://i.postimg.cc/13ZtYpC3/lincoln.png",
+      avatar: "https://i.postimg.cc/SjzsrvCh/lincoln.png",
       bio: "16th President of the United States. Preserved the Union, abolished slavery.",
       postsCount: 5,
       followersCount: 1865000,
@@ -206,7 +206,7 @@ export const users: Array<{
     },
     profile: {
       username: "sejong",
-      avatar: "https://i.postimg.cc/NMyyV1Fh/sejong.png",
+      avatar: "https://i.postimg.cc/3JMdrKTN/sejong.png",
       bio: "4th King of Joseon. Creator of Hangul, the Korean alphabet.",
       postsCount: 1443,
       followersCount: 10000000,

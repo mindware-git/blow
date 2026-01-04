@@ -192,7 +192,7 @@ export const mockPosts: Post[] = [
     comments: 14,
     updatedAt: new Date(Date.now() - 20 * 86400000).toISOString(),
     text: "Woke up to this amazing feedback from a user. This is why I build. ❤️ #indieacker #buildinpublic #motivation",
-    mediaUrls: ["https.postimg.cc/S_S/leos-post2.png"],
+    mediaUrls: ["https://i.postimg.cc/WpD332D5/amina-post1.png"],
   },
   {
     id: "post22",
@@ -303,7 +303,7 @@ export const mockPosts: Post[] = [
     comments: 150,
     updatedAt: new Date(Date.now() - 32 * 86400000).toISOString(),
     text: "Four score and seven years ago... forever grateful for the opportunity to serve this great nation. #GettysburgAddress #history #USA",
-    mediaUrls: ["https://i.postimg.cc/pr0T0y2Y/lincoln-post1.png"],
+    mediaUrls: ["https://i.postimg.cc/Bj84S8p3/lincoln-post1.png"],
   },
   {
     id: "post34",
@@ -312,7 +312,7 @@ export const mockPosts: Post[] = [
     comments: 200,
     updatedAt: new Date(Date.now() - 33 * 86400000).toISOString(),
     text: "A new dawn for freedom. The Emancipation Proclamation is signed, paving the way for a more just society. #Emancipation #Freedom #CivilWar",
-    mediaUrls: ["https://i.postimg.cc/r7Q9X1xG/lincoln-post2.png"],
+    mediaUrls: ["https://i.postimg.cc/NKyBsyDc/lincoln-post2.png"],
   },
   {
     id: "post35",
