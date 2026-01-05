@@ -28,7 +28,9 @@ export default async function MyProfilePage() {
     notFound();
   }
 
-  console.log(`[SSR] Loaded profile and ${posts.length} posts for ${username}.`);
+  console.log(
+    `[SSR] Loaded profile and ${posts.length} posts for ${username}.`,
+  );
 
   return (
     <div className="flex">

@@ -1,4 +1,4 @@
-import { Post } from "@/types/post";
+import { Post, Comment } from "@/types/post";
 import { users } from "./user";
 
 export const mockPosts: Post[] = [
@@ -405,6 +405,112 @@ export const mockPosts: Post[] = [
     mediaUrls: ["https://i.postimg.cc/V1W0X7Y2/sunsin-post2.png"],
   },
 ];
+
+export const mockComments: Comment[] = [
+  {
+    id: "c1",
+    postId: "post1",
+    authorId: "u_001",
+    authorUsername: "aria",
+    content: "Welcome to the platform! This looks great! 🎉",
+    createdAt: new Date(Date.now() - 11 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 11 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c2",
+    postId: "post1",
+    authorId: "u_002",
+    authorUsername: "sofiar",
+    content: "Love the energy here! Can't wait to see more content.",
+    createdAt: new Date(Date.now() - 10 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 10 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c3",
+    postId: "post2",
+    authorId: "u_004",
+    authorUsername: "lina",
+    content:
+      "Dedicated workspace is so important. I converted a corner of my living room!",
+    createdAt: new Date(Date.now() - 22 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 22 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c4",
+    postId: "post2",
+    authorId: "u_009",
+    authorUsername: "danielm",
+    content: "Regular breaks are crucial. I use the Pomodoro technique.",
+    createdAt: new Date(Date.now() - 20 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 20 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c5",
+    postId: "post3",
+    authorId: "u_002",
+    authorUsername: "sofiar",
+    content: "Minimalist UI is everything! So clean and elegant. ✨",
+    createdAt: new Date(Date.now() - 47 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 47 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c6",
+    postId: "post3",
+    authorId: "u_005",
+    authorUsername: "yukit",
+    content:
+      "Love the sketch style! Are you using Procreate or traditional media?",
+    createdAt: new Date(Date.now() - 42 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 42 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c7",
+    postId: "post4",
+    authorId: "u_001",
+    authorUsername: "aria",
+    content: "This palette is absolutely stunning! So sophisticated. 🎨",
+    createdAt: new Date(Date.now() - 71 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 71 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c8",
+    postId: "post4",
+    authorId: "u_004",
+    authorUsername: "lina",
+    content: "The texture play is phenomenal! This is high fashion art.",
+    createdAt: new Date(Date.now() - 69 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 69 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c9",
+    postId: "post5",
+    authorId: "u_009",
+    authorUsername: "danielm",
+    content:
+      "The data visualization here is brilliant! What tools are you using?",
+    createdAt: new Date(Date.now() - 95 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 95 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "c10",
+    postId: "post6",
+    authorId: "u_005",
+    authorUsername: "yukit",
+    content: "This lighting is incredible! What camera settings did you use?",
+    createdAt: new Date(Date.now() - 120 * 3600 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 120 * 3600 * 1000).toISOString(),
+  },
+];
+
+/**
+ * Fetches comments for a given post ID.
+ * This is a server-side function.
+ * @param postId The ID of the post to fetch comments for.
+ * @returns A promise that resolves to an array of comments.
+ */
+export async function getCommentsByPostId(postId: string): Promise<Comment[]> {
+  return mockComments.filter((c) => c.postId === postId);
+}
 
 /**
  * Fetches mock posts for a given username.

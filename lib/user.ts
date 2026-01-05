@@ -23,6 +23,22 @@ export const users: Array<{
 }> = [
   {
     user: {
+      id: "test-user-id",
+      email: "test@example.com",
+      createdAt: "2025-01-02T09:12:00Z",
+      updatedAt: "2025-01-10T14:30:00Z",
+    },
+    profile: {
+      username: "TestUser",
+      avatar: "https://i.postimg.cc/sXScNL2w/aria.png",
+      bio: "This is testuser!.",
+      postsCount: 34,
+      followersCount: 1200,
+      followingCount: 180,
+    },
+  },
+  {
+    user: {
       id: "u_001",
       email: "aria.kim@example.com",
       createdAt: "2025-01-02T09:12:00Z",
