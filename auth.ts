@@ -5,10 +5,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
   providers: [
-    // Google({
-    //   clientId: process.env.GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    // }),
     CredentialsProvider({
       credentials: {
         email: { label: "Email", type: "email" },
@@ -26,13 +22,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log("Extracted email:", email);
         console.log("Extracted password:", password);
 
-        if (email === "test@example.com" && password === "password123") {
-          console.log("Authentication successful for test user");
+        try {
+          const response = await fetch("http://127.0.0.1:8000/profiles/");
+          if (!response.ok) {
+            console.log("Failed to fetch profiles");
+            return null;
+          }
+
+          const profiles = await response.json();
+          if (profiles.length === 0) {
+            console.log("No profiles found");
+            return null;
+          }
+
+          const firstProfile = profiles[0];
+          console.log("First profile:", firstProfile);
+
           return {
-            id: "test-user-id",
-            email: email,
-            name: "TestUser",
+            email: firstProfile.id,
+            name: firstProfile.name,
           };
+        } catch (error) {
+          console.log("Error fetching profiles:", error);
         }
 
         console.log("Authentication failed - returning null");

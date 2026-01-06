@@ -26,13 +26,17 @@ class Profile(ProfileBase, table=True):
         back_populates="profiles", link_model=ProfileChatLink
     )
 
+    messages: list["Message"] = Relationship(back_populates="profile")
+    posts: list["Post"] = Relationship(back_populates="profile")
+    comments: list["Comment"] = Relationship(back_populates="profile")
+
 
 class ProfileCreate(ProfileBase):
     pass
 
 
 class ProfilePublic(ProfileBase):
-    pass
+    id: uuid.UUID
 
 
 class ProfileUpdate(SQLModel):
@@ -50,30 +54,41 @@ class Chat(ChatBase, table=True):
     profiles: list["Profile"] = Relationship(
         back_populates="chats", link_model=ProfileChatLink
     )
+    messages: list["Message"] = Relationship(back_populates="chat")
 
 
 class Message(SQLModel, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    text: str
+
+    chat_id: uuid.UUID = Field(foreign_key="chat.id")
+    chat: "Chat" = Relationship(back_populates="messages")
+
+    profile_id: uuid.UUID = Field(foreign_key="profile.id")
+    profile: "Profile" = Relationship(back_populates="messages")
 
 
-#     text: str
-#     # chat_id: uuid.UUID = Field(foreign_key="chat.id")
-#     # sender_id: uuid.UUID = Field(foreign_key="profile.id")
+class Post(SQLModel, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    text: str | None = None
+    media_urls: str
+
+    profile_id: uuid.UUID = Field(foreign_key="profile.id")
+    profile: "Profile" = Relationship(back_populates="posts")
+
+    comments: list["Comment"] = Relationship(back_populates="post")
 
 
-# class Post(SQLModel, table=True):
-#     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-#     media_urls: list[str]  # URLs to media files (images or videos)
-#     text: str | None = None
-#     # author_id: uuid.UUID = Field(foreign_key="profile.id")
+class Comment(SQLModel, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    parent_id: uuid.UUID | None = Field(default=None, foreign_key="comment.id")
+    text: str
 
+    post_id: uuid.UUID = Field(foreign_key="post.id")
+    post: "Post" = Relationship(back_populates="comments")
 
-# class Comment(SQLModel, table=True):
-#     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-#     text: str
-# post_id: uuid.UUID = Field(foreign_key="post.id")
-# author_id: uuid.UUID = Field(foreign_key="profile.id")
-# parent_id: uuid.UUID | None = Field(default=None, foreign_key="comment.id")
+    profile_id: uuid.UUID = Field(foreign_key="profile.id")
+    profile: "Profile" = Relationship(back_populates="comments")
 
 
 # class PostPublicWithComments(PostPublic):

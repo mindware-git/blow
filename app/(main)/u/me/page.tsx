@@ -3,7 +3,7 @@ import { signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SimplePostCard } from "@/components/simple-post-card";
-import { getProfileByUsername } from "@/lib/user";
+import { getProfileById } from "@/lib/user";
 import { getPostsByUsername } from "@/lib/post";
 import { notFound } from "next/navigation";
 
@@ -15,11 +15,18 @@ export default async function MyProfilePage() {
   }
 
   const username = session.user.name;
+  const userid = session.user.email;
 
-  console.log(`[SSR] Fetching mock data for user: ${username}`);
+  console.log(`[SSR] Fetching data for user: ${username}`);
+  console.log(`[SSR] Fetching data for user id: ${userid}`);
 
   // Fetch profile and posts using the new SSR functions
-  const profile = await getProfileByUsername(username);
+  if (!userid) {
+    console.warn(`[SSR] User ID not found for user: ${username}`);
+    notFound();
+  }
+
+  const profile = await getProfileById(userid);
   const posts = await getPostsByUsername(username);
 
   // If no profile is found for the user, show a 404 page.
