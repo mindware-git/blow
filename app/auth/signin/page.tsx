@@ -1,6 +1,23 @@
 import { signIn } from "@/auth";
+import { DevLoginButtons } from "@/components/dev-login-buttons";
 
-export default function SignIn() {
+export default async function SignIn() {
+  const isDevelopment = process.env.NODE_ENV === "development";
+
+  if (isDevelopment) {
+    const response = await fetch(`${process.env.RESTAPI_URL}/profiles/`);
+    if (!response.ok) {
+      console.log("Failed to fetch profiles");
+      return (
+        <div className="p-4 text-red-500">
+          Failed to load profiles. Please check the API connection.
+        </div>
+      );
+    }
+    const profiles = await response.json();
+    return <DevLoginButtons profiles={profiles} />;
+  }
+
   return (
     <form
       action={async (formData: FormData) => {

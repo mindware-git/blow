@@ -36,9 +36,14 @@ export default async function MainLayout({
               <Link href="/auth/signin">Signin</Link>
             </Button>
           ) : (
-            <Button variant="outline" asChild>
-              <Link href="/u/me">Profile</Link>
-            </Button>
+            <div className="flex space-x-2">
+              <Button variant="outline" asChild>
+                <Link href="/u/me">Profile</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/c">Chat</Link>
+              </Button>
+            </div>
           )}
         </div>
       </nav>

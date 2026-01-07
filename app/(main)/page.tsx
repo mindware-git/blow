@@ -19,7 +19,7 @@ export default async function Home() {
     <div className="flex flex-1 flex-col gap-4 p-4">
       <h1 className="text-3xl font-bold">{getGreeting()}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {feedItems.map((item) => (
+        {/* {feedItems.map((item) => (
           <Link href={`/p/${item.postId}`} key={item.postId}>
             <div className="relative w-full h-96 overflow-hidden rounded-lg">
               <Image
@@ -31,7 +31,7 @@ export default async function Home() {
               />
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   );

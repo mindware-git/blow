@@ -23,24 +23,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log("Extracted password:", password);
 
         try {
-          const response = await fetch("http://127.0.0.1:8000/profiles/");
+          // 입력된 이메일에 해당하는 특정 프로필만 가져오기
+          const response = await fetch(
+            `${process.env.RESTAPI_URL}/profiles/${email}/`,
+          );
           if (!response.ok) {
-            console.log("Failed to fetch profiles");
+            console.log("Failed to fetch profile for email:", email);
             return null;
           }
 
-          const profiles = await response.json();
-          if (profiles.length === 0) {
-            console.log("No profiles found");
-            return null;
-          }
+          const profile = await response.json();
+          console.log("Profile found:", profile);
 
-          const firstProfile = profiles[0];
-          console.log("First profile:", firstProfile);
-
+          // 프로필이 존재하면 해당 프로필의 정보를 세션에 저장
           return {
-            email: firstProfile.id,
-            name: firstProfile.name,
+            email: profile.id,
+            name: profile.name,
           };
         } catch (error) {
           console.log("Error fetching profiles:", error);
