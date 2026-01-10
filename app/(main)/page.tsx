@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { getFeed } from "@/lib/feed";
 
 export default async function Home() {
   const session = await auth();
-  const feedItems = await getFeed();
 
   // 사용자 이름 결정
   const getGreeting = () => {

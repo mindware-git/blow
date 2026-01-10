@@ -63,32 +63,30 @@ export default async function MyProfilePage() {
           <Avatar className="w-32 h-32">
             <AvatarImage
               src={profile.avatar || session.user.image || ""}
-              alt={profile.username || "User"}
+              alt={"User"}
             />
-            <AvatarFallback>
-              {(profile.username || "U").substring(0, 2).toUpperCase()}
-            </AvatarFallback>
+            <AvatarFallback>{"U".substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <section className="space-y-3">
             <div className="flex items-center space-x-4">
-              <h1 className="text-3xl font-light">
-                {profile.username || username}
-              </h1>
+              <h1 className="text-3xl font-light">{username}</h1>
             </div>
             <div className="flex space-x-8 text-sm">
               <p>
-                <span className="font-semibold">{profile.postsCount || 0}</span>{" "}
+                <span className="font-semibold">
+                  {profile.posts_count || 0}
+                </span>{" "}
                 posts
               </p>
               <p>
                 <span className="font-semibold">
-                  {profile.followersCount || 0}
+                  {profile.followers_count || 0}
                 </span>{" "}
                 followers
               </p>
               <p>
                 <span className="font-semibold">
-                  {profile.followingCount || 0}
+                  {profile.following_count || 0}
                 </span>{" "}
                 following
               </p>
