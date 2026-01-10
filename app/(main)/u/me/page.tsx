@@ -3,18 +3,8 @@ import { signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SimplePostCard } from "@/components/simple-post-card";
-import { Post } from "@/types/post";
+import { PostPublic } from "@/types";
 
-// API에서 반환하는 게시물 데이터의 타입 정의
-interface ApiPost {
-  id: string;
-  profile_id: string;
-  likes?: number;
-  comments?: number;
-  updatedAt?: string;
-  text?: string;
-  media_urls?: string;
-}
 import { getProfileById } from "@/lib/user";
 import { notFound } from "next/navigation";
 
@@ -49,16 +39,8 @@ export default async function MyProfilePage() {
       const rawData = await response.json();
       console.log("Posts data:", JSON.stringify(rawData, null, 2));
 
-      // API 데이터를 Post 타입에 맞게 변환
-      posts = rawData.map((item: ApiPost) => ({
-        id: item.id,
-        userId: item.profile_id,
-        likes: item.likes || 0,
-        comments: item.comments || 0,
-        updatedAt: item.updatedAt || new Date().toISOString(),
-        text: item.text,
-        mediaUrls: item.media_urls ? [item.media_urls] : [],
-      }));
+      // API 데이터를 PostPublic 타입에 맞게 변환
+      posts = rawData.map((item: PostPublic) => item);
     }
   } catch (error) {
     console.log("Error fetching profiles:", error);
@@ -122,7 +104,7 @@ export default async function MyProfilePage() {
           <section className="mt-12">
             <h2 className="text-2xl font-semibold mb-6">Posts</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {posts.map((post: Post) => (
+              {posts.map((post: PostPublic) => (
                 <SimplePostCard key={post.id} post={post} />
               ))}
             </div>

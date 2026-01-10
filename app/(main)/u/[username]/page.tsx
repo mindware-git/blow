@@ -1,9 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getPostsByUsername } from "@/lib/post";
-import { getProfileByUsername } from "@/lib/user";
-import { Post } from "@/types/post";
+import { PostPublic as Post } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -66,9 +64,9 @@ export default async function UserProfilePage({
         {userPosts.map((post) => (
           <Link href={`/p/${post.id}`} key={post.id}>
             <div className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-              {post.mediaUrls && post.mediaUrls.length > 0 && (
+              {post.media_urls && (
                 <Image
-                  src={post.mediaUrls[0]}
+                  src={post.media_urls}
                   alt={`Post by ${userProfile.username}`}
                   fill
                   style={{ objectFit: "cover" }}

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Post } from "@/types/post";
+import { PostPublic as Post } from "@/types";
 import Link from "next/link";
 
 type SimplePostCardProps = {
@@ -7,7 +7,7 @@ type SimplePostCardProps = {
 };
 
 export function SimplePostCard({ post }: SimplePostCardProps) {
-  const representativeImage = post.mediaUrls?.[0];
+  const representativeImage = post.media_urls;
 
   return (
     <Link href={`/p/${post.id}`}>
@@ -15,7 +15,7 @@ export function SimplePostCard({ post }: SimplePostCardProps) {
         <div className="relative w-full h-[400px]">
           <Image
             src={representativeImage}
-            alt={`Post by ${post.userId}`}
+            alt={`Post by ${post.profile_id}`}
             fill
             style={{ objectFit: "cover" }}
             className="rounded-t-lg"

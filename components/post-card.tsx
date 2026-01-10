@@ -15,7 +15,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Post } from "@/types/post";
+import { PostPublic as Post } from "@/types";
 import { Heart, MessageCircle, MoreHorizontal } from "lucide-react";
 
 type PostCardProps = {
@@ -33,19 +33,19 @@ export function PostCard({ post }: PostCardProps) {
       <CardContent className="p-0">
         <Carousel className="w-full">
           <CarouselContent>
-            {post.mediaUrls.map((url, index) => (
-              <CarouselItem key={index}>
+            {post.media_urls && (
+              <CarouselItem>
                 <div className="relative aspect-square">
                   <Image
-                    src={url}
-                    alt={`Post image ${index + 1}`}
+                    src={post.media_urls}
+                    alt={`Post image`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 400px) 100vw, 400px"
                   />
                 </div>
               </CarouselItem>
-            ))}
+            )}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
@@ -56,12 +56,6 @@ export function PostCard({ post }: PostCardProps) {
           <Heart className="h-6 w-6 cursor-pointer" />
           <MessageCircle className="h-6 w-6 cursor-pointer" />
         </div>
-        <p className="text-sm font-semibold">{post.likes} likes</p>
-
-        <p className="text-xs text-gray-500 mt-1">
-          View all {post.comments} comments
-        </p>
-        <p className="text-xs text-gray-500 mt-1">{post.updatedAt}</p>
       </CardFooter>
     </Card>
   );
