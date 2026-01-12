@@ -33,19 +33,19 @@ export function PostCard({ post }: PostCardProps) {
       <CardContent className="p-0">
         <Carousel className="w-full">
           <CarouselContent>
-            {post.media_urls && (
-              <CarouselItem>
+            {post.media_urls?.map((url, index) => (
+              <CarouselItem key={index}>
                 <div className="relative aspect-square">
                   <Image
-                    src={post.media_urls}
-                    alt={`Post image`}
+                    src={url || "/placeholder.png"}
+                    alt={`Post image ${index + 1}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 400px) 100vw, 400px"
                   />
                 </div>
               </CarouselItem>
-            )}
+            ))}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

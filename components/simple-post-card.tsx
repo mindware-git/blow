@@ -7,7 +7,7 @@ type SimplePostCardProps = {
 };
 
 export function SimplePostCard({ post }: SimplePostCardProps) {
-  const representativeImage = post.media_urls;
+  const representativeImage = post.media_urls[0];
 
   return (
     <Link href={`/p/${post.id}`}>

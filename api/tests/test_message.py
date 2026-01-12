@@ -79,11 +79,11 @@ def chat_with_profiles_fixture(session: Session, profiles: list):
     return chat
 
 
-def test_create_message(client: TestClient, chat: Chat, profile: Profile):
+def test_create_message(client: TestClient, chat_with_profiles: Chat, profile: Profile):
     # 채팅 ID와 프로필 ID로 메시지 생성
     message_data = {
         "text": "Test Message",
-        "chat_id": str(chat.id),
+        "chat_id": str(chat_with_profiles.id),
         "profile_id": str(profile.id),
     }
     response = client.post("/messages/", json=message_data)
@@ -115,13 +115,17 @@ def test_create_message_missing_chat_id(client: TestClient, profile: Profile):
     assert response.status_code == 422
 
 
-def test_read_messages(client: TestClient, chat: Chat, profile: Profile):
+def test_read_messages(client: TestClient, chat_with_profiles: Chat, profile: Profile):
     # 테스트용 메시지 생성
     message_text_1 = "First Message"
     message_text_2 = "Second Message"
 
-    message_1 = Message(text=message_text_1, chat_id=chat.id, profile_id=profile.id)
-    message_2 = Message(text=message_text_2, chat_id=chat.id, profile_id=profile.id)
+    message_1 = Message(
+        text=message_text_1, chat_id=chat_with_profiles.id, profile_id=profile.id
+    )
+    message_2 = Message(
+        text=message_text_2, chat_id=chat_with_profiles.id, profile_id=profile.id
+    )
 
     with client.app.dependency_overrides[get_session]() as session:
         session.add(message_1)

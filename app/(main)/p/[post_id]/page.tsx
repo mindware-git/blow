@@ -1,18 +1,5 @@
 import Image from "next/image";
-
-// API에서 반환되는 실제 데이터 구조에 맞는 타입 정의
-interface ApiPost {
-  id: string;
-  text?: string;
-  media_urls: string;
-  profile_id: string;
-}
-
-// API에서 반환되는 프로필 데이터 구조에 맞는 타입 정의
-interface ApiProfile {
-  name: string;
-  avatar?: string;
-}
+import { PostPublic } from "@/types";
 
 export default async function PostPage({
   params,
@@ -22,7 +9,7 @@ export default async function PostPage({
   const { post_id } = await params;
 
   // REST API에서 게시물 데이터 가져오기
-  let post: ApiPost | null = null;
+  let post: PostPublic | null = null;
   try {
     const response = await fetch(
       `${process.env.RESTAPI_URL}/posts/${post_id}/`,
@@ -49,7 +36,7 @@ export default async function PostPage({
         {/* 이미지 표시 */}
         <div className="relative w-full h-96">
           <Image
-            src={post.media_urls || "/placeholder.png"}
+            src={post.media_urls?.[0] || "/placeholder.png"}
             alt="Post image"
             fill
             className="object-cover"

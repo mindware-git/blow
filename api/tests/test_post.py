@@ -45,7 +45,7 @@ def test_create_post(client: TestClient, profiles: list):
     # 첫 번째 프로필 ID로 게시물 생성
     post_data = {
         "text": "Test post content",
-        "media_urls": "https://example.com/image.jpg",
+        "media_urls": ["https://example.com/image.jpg"],
         "profile_id": str(profiles[0].id),
     }
 
@@ -62,7 +62,7 @@ def test_create_post_invalid(client: TestClient):
     # 유효하지 않은 프로필 ID로 게시물 생성 시도
     post_data = {
         "text": "Test post content",
-        "media_urls": "https://example.com/image.jpg",
+        "media_urls": ["https://example.com/image.jpg"],
         "profile_id": "invalid-uuid",
     }
 
@@ -74,12 +74,12 @@ def test_read_posts(client: TestClient, profiles: list):
     # 게시물 생성
     post_1 = Post(
         text="First post",
-        media_urls="https://example.com/image1.jpg",
+        media_urls=["https://example.com/image1.jpg"],
         profile_id=profiles[0].id,
     )
     post_2 = Post(
         text="Second post",
-        media_urls="https://example.com/image2.jpg",
+        media_urls=["https://example.com/image2.jpg"],
         profile_id=profiles[1].id,
     )
 
@@ -118,7 +118,7 @@ def test_read_post(client: TestClient, profiles: list):
     # 게시물 생성
     post_data = {
         "text": "Test post",
-        "media_urls": "https://example.com/image.jpg",
+        "media_urls": ["https://example.com/image.jpg"],
         "profile_id": str(profiles[0].id),
     }
 
@@ -139,12 +139,12 @@ def test_read_profile_posts(client: TestClient, profiles: list):
     # 첫 번째 프로필의 게시물 생성
     post_1 = Post(
         text="First post by TestUser1",
-        media_urls="https://example.com/image1.jpg",
+        media_urls=["https://example.com/image1.jpg"],
         profile_id=profiles[0].id,
     )
     post_2 = Post(
         text="Second post by TestUser1",
-        media_urls="https://example.com/image2.jpg",
+        media_urls=["https://example.com/image2.jpg"],
         profile_id=profiles[0].id,
     )
 

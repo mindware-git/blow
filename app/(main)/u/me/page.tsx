@@ -49,6 +49,32 @@ export default async function MyProfilePage() {
   // If no profile is found for the user, show a 404 page.
   if (!profile) {
     console.warn(`[SSR] Profile not found for user: ${username}`);
+    if (process.env.NODE_ENV === "development") {
+      return (
+        <main className="flex min-h-screen flex-col items-center justify-center p-6">
+          <div className="text-center space-y-4">
+            <h1 className="text-2xl font-bold text-red-600">
+              Profile not found for user: {username}
+            </h1>
+            <p className="text-gray-600">User ID: {userid}</p>
+            <form
+              action={async () => {
+                "use server";
+                await signOut({ redirectTo: "/" });
+              }}
+              className="inline-block"
+            >
+              <button
+                type="submit"
+                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+              >
+                로그아웃
+              </button>
+            </form>
+          </div>
+        </main>
+      );
+    }
     notFound();
   }
 

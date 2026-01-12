@@ -85,7 +85,7 @@ export type PostCreate = {
     /**
      * Media Urls
      */
-    media_urls: string;
+    media_urls: Array<string>;
     /**
      * Profile Id
      */
@@ -103,7 +103,7 @@ export type PostPublic = {
     /**
      * Media Urls
      */
-    media_urls: string;
+    media_urls: Array<string>;
     /**
      * Id
      */
@@ -354,6 +354,36 @@ export type UpdateProfileProfilesProfileIdPatchResponses = {
 };
 
 export type UpdateProfileProfilesProfileIdPatchResponse = UpdateProfileProfilesProfileIdPatchResponses[keyof UpdateProfileProfilesProfileIdPatchResponses];
+
+export type ReadUserByNameUsersNameGetData = {
+    body?: never;
+    path: {
+        /**
+         * Name
+         */
+        name: string;
+    };
+    query?: never;
+    url: '/users/{name}';
+};
+
+export type ReadUserByNameUsersNameGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadUserByNameUsersNameGetError = ReadUserByNameUsersNameGetErrors[keyof ReadUserByNameUsersNameGetErrors];
+
+export type ReadUserByNameUsersNameGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ProfilePublic;
+};
+
+export type ReadUserByNameUsersNameGetResponse = ReadUserByNameUsersNameGetResponses[keyof ReadUserByNameUsersNameGetResponses];
 
 export type ReadPostsPostsGetData = {
     body?: never;

@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { CreateChatChatsPostData, CreateChatChatsPostErrors, CreateChatChatsPostResponses, CreateMessageMessagesPostData, CreateMessageMessagesPostErrors, CreateMessageMessagesPostResponses, CreatePostPostsPostData, CreatePostPostsPostErrors, CreatePostPostsPostResponses, CreateProfileProfilesPostData, CreateProfileProfilesPostErrors, CreateProfileProfilesPostResponses, DeleteProfileProfilesProfileIdDeleteData, DeleteProfileProfilesProfileIdDeleteErrors, DeleteProfileProfilesProfileIdDeleteResponses, ReadChatChatsChatIdGetData, ReadChatChatsChatIdGetErrors, ReadChatChatsChatIdGetResponses, ReadChatMessagesChatsChatIdMessagesGetData, ReadChatMessagesChatsChatIdMessagesGetErrors, ReadChatMessagesChatsChatIdMessagesGetResponses, ReadChatsChatsGetData, ReadChatsChatsGetErrors, ReadChatsChatsGetResponses, ReadMessagesMessagesGetData, ReadMessagesMessagesGetErrors, ReadMessagesMessagesGetResponses, ReadPostPostsPostIdGetData, ReadPostPostsPostIdGetErrors, ReadPostPostsPostIdGetResponses, ReadPostsPostsGetData, ReadPostsPostsGetErrors, ReadPostsPostsGetResponses, ReadProfilePostsProfilesProfileIdPostsGetData, ReadProfilePostsProfilesProfileIdPostsGetErrors, ReadProfilePostsProfilesProfileIdPostsGetResponses, ReadProfileProfilesProfileIdGetData, ReadProfileProfilesProfileIdGetErrors, ReadProfileProfilesProfileIdGetResponses, ReadProfilesProfilesGetData, ReadProfilesProfilesGetErrors, ReadProfilesProfilesGetResponses, UpdateProfileProfilesProfileIdPatchData, UpdateProfileProfilesProfileIdPatchErrors, UpdateProfileProfilesProfileIdPatchResponses } from './types.gen';
+import type { CreateChatChatsPostData, CreateChatChatsPostErrors, CreateChatChatsPostResponses, CreateMessageMessagesPostData, CreateMessageMessagesPostErrors, CreateMessageMessagesPostResponses, CreatePostPostsPostData, CreatePostPostsPostErrors, CreatePostPostsPostResponses, CreateProfileProfilesPostData, CreateProfileProfilesPostErrors, CreateProfileProfilesPostResponses, DeleteProfileProfilesProfileIdDeleteData, DeleteProfileProfilesProfileIdDeleteErrors, DeleteProfileProfilesProfileIdDeleteResponses, ReadChatChatsChatIdGetData, ReadChatChatsChatIdGetErrors, ReadChatChatsChatIdGetResponses, ReadChatMessagesChatsChatIdMessagesGetData, ReadChatMessagesChatsChatIdMessagesGetErrors, ReadChatMessagesChatsChatIdMessagesGetResponses, ReadChatsChatsGetData, ReadChatsChatsGetErrors, ReadChatsChatsGetResponses, ReadMessagesMessagesGetData, ReadMessagesMessagesGetErrors, ReadMessagesMessagesGetResponses, ReadPostPostsPostIdGetData, ReadPostPostsPostIdGetErrors, ReadPostPostsPostIdGetResponses, ReadPostsPostsGetData, ReadPostsPostsGetErrors, ReadPostsPostsGetResponses, ReadProfilePostsProfilesProfileIdPostsGetData, ReadProfilePostsProfilesProfileIdPostsGetErrors, ReadProfilePostsProfilesProfileIdPostsGetResponses, ReadProfileProfilesProfileIdGetData, ReadProfileProfilesProfileIdGetErrors, ReadProfileProfilesProfileIdGetResponses, ReadProfilesProfilesGetData, ReadProfilesProfilesGetErrors, ReadProfilesProfilesGetResponses, ReadUserByNameUsersNameGetData, ReadUserByNameUsersNameGetErrors, ReadUserByNameUsersNameGetResponses, UpdateProfileProfilesProfileIdPatchData, UpdateProfileProfilesProfileIdPatchErrors, UpdateProfileProfilesProfileIdPatchResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -56,6 +56,11 @@ export const updateProfileProfilesProfileIdPatch = <ThrowOnError extends boolean
         ...options.headers
     }
 });
+
+/**
+ * Read User By Name
+ */
+export const readUserByNameUsersNameGet = <ThrowOnError extends boolean = false>(options: Options<ReadUserByNameUsersNameGetData, ThrowOnError>) => (options.client ?? client).get<ReadUserByNameUsersNameGetResponses, ReadUserByNameUsersNameGetErrors, ThrowOnError>({ url: '/users/{name}', ...options });
 
 /**
  * Read Posts

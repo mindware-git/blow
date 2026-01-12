@@ -66,6 +66,14 @@ def read_profile(*, session: Session = Depends(get_session), profile_id: UUID):
     return profile
 
 
+@router.get("/users/{name}", response_model=ProfilePublic)
+def read_user_by_name(*, session: Session = Depends(get_session), name: str):
+    profile = session.exec(select(Profile).where(Profile.name == name)).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    return profile
+
+
 @router.patch("/profiles/{profile_id}", response_model=ProfilePublic)
 def update_profile(
     *, session: Session = Depends(get_session), profile_id: UUID, profile: ProfileUpdate
