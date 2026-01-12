@@ -89,3 +89,48 @@ export async function getAllPosts(): Promise<PostPublic[] | null> {
     return null;
   }
 }
+
+/**
+ * Creates a new post.
+ * This is a client-side function.
+ * @param text The text content of the post.
+ * @param files The media files to attach to the post.
+ * @param profile_id The ID of the profile creating the post.
+ * @returns A promise that resolves to the created post or an error object.
+ */
+export async function createPost(
+  text: string,
+  files: File[],
+  profile_id: string,
+): Promise<{ post: PostPublic | null; error: string | null }> {
+  const formData = new FormData();
+  formData.append("text", text);
+  formData.append("profile_id", profile_id);
+  files.forEach((file) => {
+    formData.append("files", file);
+  });
+
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/posts/`,
+      {
+        method: "POST",
+        body: formData,
+      },
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return {
+        post: null,
+        error: errorData.detail || "Failed to create post.",
+      };
+    }
+
+    const post = await response.json();
+    return { post, error: null };
+  } catch (error) {
+    console.error("Failed to create post:", error);
+    return { post: null, error: "An unexpected error occurred." };
+  }
+}
