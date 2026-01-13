@@ -5,7 +5,7 @@ export default async function SignIn() {
   const isDevelopment = process.env.NODE_ENV === "development";
 
   if (isDevelopment) {
-    const response = await fetch(`${process.env.RESTAPI_URL}/profiles/`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}/profiles/`);
     if (!response.ok) {
       console.log("Failed to fetch profiles");
       return (

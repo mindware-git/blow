@@ -19,7 +19,7 @@ export default async function MessagesPage() {
   // REST API에서 Chat 목록 가져오기
   let chats: Chat[] = [];
   try {
-    const response = await fetch(`${process.env.RESTAPI_URL}/chats/`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}/chats/`);
     if (response.ok) {
       chats = await response.json();
     }

@@ -31,7 +31,7 @@ export default async function MyProfilePage() {
   let posts = [];
   try {
     const response = await fetch(
-      `${process.env.RESTAPI_URL}/profiles/${userid}/posts/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/profiles/${userid}/posts/`,
     );
     if (!response.ok) {
       console.log("Failed to fetch");

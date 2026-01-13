@@ -12,7 +12,7 @@ export default async function PostPage({
   let post: PostPublic | null = null;
   try {
     const response = await fetch(
-      `${process.env.RESTAPI_URL}/posts/${post_id}/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/posts/${post_id}/`,
     );
     if (response.ok) {
       post = await response.json();

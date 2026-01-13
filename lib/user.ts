@@ -10,7 +10,7 @@ export async function getProfileById(
   id: string,
 ): Promise<ProfilePublic | null> {
   try {
-    const response = await fetch(`${process.env.RESTAPI_URL}/profiles/${id}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}/profiles/${id}`);
     if (!response.ok) {
       return null;
     }
@@ -31,7 +31,7 @@ export async function getProfileByName(
   name: string,
 ): Promise<ProfilePublic | null> {
   try {
-    const response = await fetch(`${process.env.RESTAPI_URL}/users/${name}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}/users/${name}`);
     if (!response.ok) {
       return null;
     }
@@ -60,7 +60,7 @@ export async function getPostsByName(
 
     // Step 2: Get posts by profile ID
     const response = await fetch(
-      `${process.env.RESTAPI_URL}/profiles/${profile.id}/posts/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/profiles/${profile.id}/posts/`,
     );
     if (!response.ok) {
       return null;
@@ -79,7 +79,7 @@ export async function getPostsByName(
  */
 export async function getAllPosts(): Promise<PostPublic[] | null> {
   try {
-    const response = await fetch(`${process.env.RESTAPI_URL}/posts/`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}/posts/`);
     if (!response.ok) {
       return null;
     }

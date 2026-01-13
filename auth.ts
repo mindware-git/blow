@@ -25,7 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           // 입력된 이메일에 해당하는 특정 프로필만 가져오기
           const response = await fetch(
-            `${process.env.RESTAPI_URL}/profiles/${email}/`,
+            `${process.env.NEXT_PUBLIC_RESTAPI_URL}/profiles/${email}/`,
           );
           if (!response.ok) {
             console.log("Failed to fetch profile for email:", email);

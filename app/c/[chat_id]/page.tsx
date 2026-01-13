@@ -28,7 +28,7 @@ export default async function ThreadPage({
 
   try {
     const response = await fetch(
-      `${process.env.RESTAPI_URL}/chats/${chat_id}/messages/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/chats/${chat_id}/messages/`,
     );
     if (response.ok) {
       messages = await response.json();
