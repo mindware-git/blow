@@ -5,13 +5,10 @@ import { Button } from "@/components/ui/button";
 export function GoogleLoginButton() {
   const handleGoogleLogin = () => {
     const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-    const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI;
+    const redirectUri = `${window.location.origin}/auth/callback/google`;
 
-    console.log("Client ID:", clientId);
-    console.log("Redirect URI:", redirectUri);
-
-    if (!clientId || !redirectUri) {
-      console.error("Missing Google OAuth environment variables");
+    if (!clientId) {
+      console.error("Missing Google client ID environment variable");
       return;
     }
 
