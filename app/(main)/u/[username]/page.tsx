@@ -68,7 +68,7 @@ export default async function UserProfilePage({
         {userPosts.map((post) => (
           <Link href={`/p/${post.id}`} key={post.id}>
             <div className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-              {post.media_urls[0] && (
+              {post.media_urls?.[0] && (
                 <Image
                   src={post.media_urls[0]}
                   alt={`Post by ${userProfile.name}`}

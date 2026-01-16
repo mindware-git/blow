@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import { PostPublic as Post } from "@/types";
 import { Heart, MessageCircle, MoreHorizontal } from "lucide-react";
+import { getImageUrl } from "@/lib/image-url";
 
 type PostCardProps = {
   post: Post;
@@ -37,7 +38,7 @@ export function PostCard({ post }: PostCardProps) {
               <CarouselItem key={index}>
                 <div className="relative aspect-square">
                   <Image
-                    src={url || "/placeholder.png"}
+                    src={getImageUrl(url || "/placeholder.png")}
                     alt={`Post image ${index + 1}`}
                     fill
                     className="object-cover"

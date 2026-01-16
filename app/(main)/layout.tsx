@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Menu, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/auth";
 import Link from "next/link";
@@ -37,6 +37,12 @@ export default async function MainLayout({
             </Button>
           ) : (
             <div className="flex space-x-2">
+              <Button variant="outline" asChild>
+                <Link href="/p/create">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create
+                </Link>
+              </Button>
               <Button variant="outline" asChild>
                 <Link href="/u/me">Profile</Link>
               </Button>

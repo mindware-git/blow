@@ -5,6 +5,24 @@ export type ClientOptions = {
 };
 
 /**
+ * Body_create_post_posts__post
+ */
+export type BodyCreatePostPostsPost = {
+    /**
+     * Text
+     */
+    text?: string | null;
+    /**
+     * Profile Id
+     */
+    profile_id: string;
+    /**
+     * Files
+     */
+    files: Array<Blob | File>;
+};
+
+/**
  * ChatCreate
  */
 export type ChatCreate = {
@@ -30,6 +48,54 @@ export type ChatPublic = {
      * Id
      */
     id: string;
+};
+
+/**
+ * CommentCreate
+ */
+export type CommentCreate = {
+    /**
+     * Text
+     */
+    text: string;
+    /**
+     * Post Id
+     */
+    post_id: string;
+    /**
+     * Profile Id
+     */
+    profile_id: string;
+    /**
+     * Parent Id
+     */
+    parent_id?: string | null;
+};
+
+/**
+ * CommentPublic
+ */
+export type CommentPublic = {
+    /**
+     * Text
+     */
+    text: string;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Post Id
+     */
+    post_id: string;
+    /**
+     * Profile Id
+     */
+    profile_id: string;
+    /**
+     * Parent Id
+     */
+    parent_id?: string | null;
 };
 
 /**
@@ -75,24 +141,6 @@ export type MessagePublic = {
 };
 
 /**
- * PostCreate
- */
-export type PostCreate = {
-    /**
-     * Text
-     */
-    text?: string | null;
-    /**
-     * Media Urls
-     */
-    media_urls: Array<string>;
-    /**
-     * Profile Id
-     */
-    profile_id: string;
-};
-
-/**
  * PostPublic
  */
 export type PostPublic = {
@@ -101,10 +149,6 @@ export type PostPublic = {
      */
     text?: string | null;
     /**
-     * Media Urls
-     */
-    media_urls: Array<string>;
-    /**
      * Id
      */
     id: string;
@@ -112,6 +156,10 @@ export type PostPublic = {
      * Profile Id
      */
     profile_id: string;
+    /**
+     * Media Urls
+     */
+    media_urls?: Array<string>;
 };
 
 /**
@@ -205,6 +253,40 @@ export type ValidationError = {
      */
     type: string;
 };
+
+export type GoogleCallbackAuthCallbackGooglePostData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Code
+         */
+        code: string;
+    };
+    url: '/auth/callback/google';
+};
+
+export type GoogleCallbackAuthCallbackGooglePostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GoogleCallbackAuthCallbackGooglePostError = GoogleCallbackAuthCallbackGooglePostErrors[keyof GoogleCallbackAuthCallbackGooglePostErrors];
+
+export type GoogleCallbackAuthCallbackGooglePostResponses = {
+    /**
+     * Response Google Callback Auth Callback Google Post
+     *
+     * Successful Response
+     */
+    200: {
+        [key: string]: unknown;
+    };
+};
+
+export type GoogleCallbackAuthCallbackGooglePostResponse = GoogleCallbackAuthCallbackGooglePostResponses[keyof GoogleCallbackAuthCallbackGooglePostResponses];
 
 export type ReadProfilesProfilesGetData = {
     body?: never;
@@ -384,97 +466,6 @@ export type ReadUserByNameUsersNameGetResponses = {
 };
 
 export type ReadUserByNameUsersNameGetResponse = ReadUserByNameUsersNameGetResponses[keyof ReadUserByNameUsersNameGetResponses];
-
-export type ReadPostsPostsGetData = {
-    body?: never;
-    path?: never;
-    query?: {
-        /**
-         * Offset
-         */
-        offset?: number;
-        /**
-         * Limit
-         */
-        limit?: number;
-    };
-    url: '/posts/';
-};
-
-export type ReadPostsPostsGetErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReadPostsPostsGetError = ReadPostsPostsGetErrors[keyof ReadPostsPostsGetErrors];
-
-export type ReadPostsPostsGetResponses = {
-    /**
-     * Response Read Posts Posts  Get
-     *
-     * Successful Response
-     */
-    200: Array<PostPublic>;
-};
-
-export type ReadPostsPostsGetResponse = ReadPostsPostsGetResponses[keyof ReadPostsPostsGetResponses];
-
-export type CreatePostPostsPostData = {
-    body: PostCreate;
-    path?: never;
-    query?: never;
-    url: '/posts/';
-};
-
-export type CreatePostPostsPostErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type CreatePostPostsPostError = CreatePostPostsPostErrors[keyof CreatePostPostsPostErrors];
-
-export type CreatePostPostsPostResponses = {
-    /**
-     * Successful Response
-     */
-    200: PostPublic;
-};
-
-export type CreatePostPostsPostResponse = CreatePostPostsPostResponses[keyof CreatePostPostsPostResponses];
-
-export type ReadPostPostsPostIdGetData = {
-    body?: never;
-    path: {
-        /**
-         * Post Id
-         */
-        post_id: string;
-    };
-    query?: never;
-    url: '/posts/{post_id}';
-};
-
-export type ReadPostPostsPostIdGetErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReadPostPostsPostIdGetError = ReadPostPostsPostIdGetErrors[keyof ReadPostPostsPostIdGetErrors];
-
-export type ReadPostPostsPostIdGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: PostPublic;
-};
-
-export type ReadPostPostsPostIdGetResponse = ReadPostPostsPostIdGetResponses[keyof ReadPostPostsPostIdGetResponses];
 
 export type ReadProfilePostsProfilesProfileIdPostsGetData = {
     body?: never;
@@ -691,3 +682,218 @@ export type ReadChatMessagesChatsChatIdMessagesGetResponses = {
 };
 
 export type ReadChatMessagesChatsChatIdMessagesGetResponse = ReadChatMessagesChatsChatIdMessagesGetResponses[keyof ReadChatMessagesChatsChatIdMessagesGetResponses];
+
+export type ReadPostsPostsGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Offset
+         */
+        offset?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/posts/';
+};
+
+export type ReadPostsPostsGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadPostsPostsGetError = ReadPostsPostsGetErrors[keyof ReadPostsPostsGetErrors];
+
+export type ReadPostsPostsGetResponses = {
+    /**
+     * Response Read Posts Posts  Get
+     *
+     * Successful Response
+     */
+    200: Array<PostPublic>;
+};
+
+export type ReadPostsPostsGetResponse = ReadPostsPostsGetResponses[keyof ReadPostsPostsGetResponses];
+
+export type CreatePostPostsPostData = {
+    body: BodyCreatePostPostsPost;
+    path?: never;
+    query?: never;
+    url: '/posts/';
+};
+
+export type CreatePostPostsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreatePostPostsPostError = CreatePostPostsPostErrors[keyof CreatePostPostsPostErrors];
+
+export type CreatePostPostsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: PostPublic;
+};
+
+export type CreatePostPostsPostResponse = CreatePostPostsPostResponses[keyof CreatePostPostsPostResponses];
+
+export type ReadPostPostsPostIdGetData = {
+    body?: never;
+    path: {
+        /**
+         * Post Id
+         */
+        post_id: string;
+    };
+    query?: never;
+    url: '/posts/{post_id}';
+};
+
+export type ReadPostPostsPostIdGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadPostPostsPostIdGetError = ReadPostPostsPostIdGetErrors[keyof ReadPostPostsPostIdGetErrors];
+
+export type ReadPostPostsPostIdGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: PostPublic;
+};
+
+export type ReadPostPostsPostIdGetResponse = ReadPostPostsPostIdGetResponses[keyof ReadPostPostsPostIdGetResponses];
+
+export type CreateCommentCommentsPostData = {
+    body: CommentCreate;
+    path?: never;
+    query?: never;
+    url: '/comments/';
+};
+
+export type CreateCommentCommentsPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type CreateCommentCommentsPostError = CreateCommentCommentsPostErrors[keyof CreateCommentCommentsPostErrors];
+
+export type CreateCommentCommentsPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: CommentPublic;
+};
+
+export type CreateCommentCommentsPostResponse = CreateCommentCommentsPostResponses[keyof CreateCommentCommentsPostResponses];
+
+export type DeleteCommentCommentsCommentIdDeleteData = {
+    body?: never;
+    path: {
+        /**
+         * Comment Id
+         */
+        comment_id: string;
+    };
+    query?: never;
+    url: '/comments/{comment_id}';
+};
+
+export type DeleteCommentCommentsCommentIdDeleteErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type DeleteCommentCommentsCommentIdDeleteError = DeleteCommentCommentsCommentIdDeleteErrors[keyof DeleteCommentCommentsCommentIdDeleteErrors];
+
+export type DeleteCommentCommentsCommentIdDeleteResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type ReadCommentCommentsCommentIdGetData = {
+    body?: never;
+    path: {
+        /**
+         * Comment Id
+         */
+        comment_id: string;
+    };
+    query?: never;
+    url: '/comments/{comment_id}';
+};
+
+export type ReadCommentCommentsCommentIdGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadCommentCommentsCommentIdGetError = ReadCommentCommentsCommentIdGetErrors[keyof ReadCommentCommentsCommentIdGetErrors];
+
+export type ReadCommentCommentsCommentIdGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: CommentPublic;
+};
+
+export type ReadCommentCommentsCommentIdGetResponse = ReadCommentCommentsCommentIdGetResponses[keyof ReadCommentCommentsCommentIdGetResponses];
+
+export type ReadCommentsForPostCommentsPostPostIdGetData = {
+    body?: never;
+    path: {
+        /**
+         * Post Id
+         */
+        post_id: string;
+    };
+    query?: {
+        /**
+         * Offset
+         */
+        offset?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/comments/post/{post_id}';
+};
+
+export type ReadCommentsForPostCommentsPostPostIdGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ReadCommentsForPostCommentsPostPostIdGetError = ReadCommentsForPostCommentsPostPostIdGetErrors[keyof ReadCommentsForPostCommentsPostPostIdGetErrors];
+
+export type ReadCommentsForPostCommentsPostPostIdGetResponses = {
+    /**
+     * Response Read Comments For Post Comments Post  Post Id  Get
+     *
+     * Successful Response
+     */
+    200: Array<CommentPublic>;
+};
+
+export type ReadCommentsForPostCommentsPostPostIdGetResponse = ReadCommentsForPostCommentsPostPostIdGetResponses[keyof ReadCommentsForPostCommentsPostPostIdGetResponses];

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PostPublic } from "@/types";
+import { getImageUrl } from "@/lib/image-url";
 
 export default async function PostPage({
   params,
@@ -36,7 +37,7 @@ export default async function PostPage({
         {/* 이미지 표시 */}
         <div className="relative w-full h-96">
           <Image
-            src={post.media_urls?.[0] || "/placeholder.png"}
+            src={getImageUrl(post.media_urls?.[0] || "/placeholder.png")}
             alt="Post image"
             fill
             className="object-cover"
