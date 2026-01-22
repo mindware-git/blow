@@ -23,6 +23,34 @@ export type BodyCreatePostPostsPost = {
 };
 
 /**
+ * Body_update_profile_avatar_profiles__profile_id__avatar_patch
+ */
+export type BodyUpdateProfileAvatarProfilesProfileIdAvatarPatch = {
+    /**
+     * File
+     */
+    file: Blob | File;
+};
+
+/**
+ * Body_upload_images_upload_images__post
+ */
+export type BodyUploadImagesUploadImagesPost = {
+    /**
+     * Files
+     */
+    files: Array<Blob | File>;
+    /**
+     * Object Type
+     */
+    object_type: string;
+    /**
+     * Object Id
+     */
+    object_id: string;
+};
+
+/**
  * ChatCreate
  */
 export type ChatCreate = {
@@ -109,6 +137,60 @@ export type HttpValidationError = {
 };
 
 /**
+ * MediaPublic
+ */
+export type MediaPublic = {
+    /**
+     * Original Url
+     */
+    original_url: string;
+    /**
+     * Thumbnail Url
+     */
+    thumbnail_url?: string | null;
+    /**
+     * Media Type
+     */
+    media_type: string;
+    /**
+     * File Size
+     */
+    file_size?: number | null;
+    /**
+     * Width
+     */
+    width?: number | null;
+    /**
+     * Height
+     */
+    height?: number | null;
+    /**
+     * Filename
+     */
+    filename: string;
+    /**
+     * Content Type
+     */
+    content_type?: string | null;
+    /**
+     * Object Type
+     */
+    object_type: string;
+    /**
+     * Object Id
+     */
+    object_id: string;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Created At
+     */
+    created_at: string;
+};
+
+/**
  * MessageCreate
  */
 export type MessageCreate = {
@@ -138,6 +220,18 @@ export type MessagePublic = {
      * Id
      */
     id: string;
+    /**
+     * Chat Id
+     */
+    chat_id: string;
+    /**
+     * Profile Id
+     */
+    profile_id: string;
+    /**
+     * Media File Ids
+     */
+    media_file_ids?: Array<string>;
 };
 
 /**
@@ -498,6 +592,36 @@ export type ReadProfilePostsProfilesProfileIdPostsGetResponses = {
 };
 
 export type ReadProfilePostsProfilesProfileIdPostsGetResponse = ReadProfilePostsProfilesProfileIdPostsGetResponses[keyof ReadProfilePostsProfilesProfileIdPostsGetResponses];
+
+export type UpdateProfileAvatarProfilesProfileIdAvatarPatchData = {
+    body: BodyUpdateProfileAvatarProfilesProfileIdAvatarPatch;
+    path: {
+        /**
+         * Profile Id
+         */
+        profile_id: string;
+    };
+    query?: never;
+    url: '/profiles/{profile_id}/avatar';
+};
+
+export type UpdateProfileAvatarProfilesProfileIdAvatarPatchErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UpdateProfileAvatarProfilesProfileIdAvatarPatchError = UpdateProfileAvatarProfilesProfileIdAvatarPatchErrors[keyof UpdateProfileAvatarProfilesProfileIdAvatarPatchErrors];
+
+export type UpdateProfileAvatarProfilesProfileIdAvatarPatchResponses = {
+    /**
+     * Successful Response
+     */
+    200: ProfilePublic;
+};
+
+export type UpdateProfileAvatarProfilesProfileIdAvatarPatchResponse = UpdateProfileAvatarProfilesProfileIdAvatarPatchResponses[keyof UpdateProfileAvatarProfilesProfileIdAvatarPatchResponses];
 
 export type ReadChatsChatsGetData = {
     body?: never;
@@ -897,3 +1021,104 @@ export type ReadCommentsForPostCommentsPostPostIdGetResponses = {
 };
 
 export type ReadCommentsForPostCommentsPostPostIdGetResponse = ReadCommentsForPostCommentsPostPostIdGetResponses[keyof ReadCommentsForPostCommentsPostPostIdGetResponses];
+
+export type UploadImagesUploadImagesPostData = {
+    body: BodyUploadImagesUploadImagesPost;
+    path?: never;
+    query?: never;
+    url: '/upload/images/';
+};
+
+export type UploadImagesUploadImagesPostErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UploadImagesUploadImagesPostError = UploadImagesUploadImagesPostErrors[keyof UploadImagesUploadImagesPostErrors];
+
+export type UploadImagesUploadImagesPostResponses = {
+    /**
+     * Response Upload Images Upload Images  Post
+     *
+     * Successful Response
+     */
+    200: Array<MediaPublic>;
+};
+
+export type UploadImagesUploadImagesPostResponse = UploadImagesUploadImagesPostResponses[keyof UploadImagesUploadImagesPostResponses];
+
+export type GetMediaMediaMediaIdGetData = {
+    body?: never;
+    path: {
+        /**
+         * Media Id
+         */
+        media_id: string;
+    };
+    query?: never;
+    url: '/media/{media_id}';
+};
+
+export type GetMediaMediaMediaIdGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type GetMediaMediaMediaIdGetError = GetMediaMediaMediaIdGetErrors[keyof GetMediaMediaMediaIdGetErrors];
+
+export type GetMediaMediaMediaIdGetResponses = {
+    /**
+     * Successful Response
+     */
+    200: MediaPublic;
+};
+
+export type GetMediaMediaMediaIdGetResponse = GetMediaMediaMediaIdGetResponses[keyof GetMediaMediaMediaIdGetResponses];
+
+export type ListMediaMediaGetData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Object Type
+         */
+        object_type?: string | null;
+        /**
+         * Object Id
+         */
+        object_id?: string | null;
+        /**
+         * Offset
+         */
+        offset?: number;
+        /**
+         * Limit
+         */
+        limit?: number;
+    };
+    url: '/media/';
+};
+
+export type ListMediaMediaGetErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type ListMediaMediaGetError = ListMediaMediaGetErrors[keyof ListMediaMediaGetErrors];
+
+export type ListMediaMediaGetResponses = {
+    /**
+     * Response List Media Media  Get
+     *
+     * Successful Response
+     */
+    200: Array<MediaPublic>;
+};
+
+export type ListMediaMediaGetResponse = ListMediaMediaGetResponses[keyof ListMediaMediaGetResponses];

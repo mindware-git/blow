@@ -1,73 +1,112 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Field, FieldContent } from "@/components/ui/field";
+import ImagePreview from "./image-preview";
 
 interface MessageInputProps {
-  threadId: string;
+  onSendMessage: (text: string, files: File[]) => void;
+  disabled?: boolean;
+  placeholder?: string;
 }
 
-export default function MessageInput({ threadId }: MessageInputProps) {
+export default function MessageInput({
+  onSendMessage,
+  disabled = false,
+  placeholder = "Type a message...",
+}: MessageInputProps) {
   const [message, setMessage] = useState("");
-  const [sending, setSending] = useState(false);
-
-  const sendMessage = async (text: string) => {
-    if (!text.trim()) return;
-
-    setSending(true);
-    try {
-      const response = await fetch("https://localhost/post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: text,
-          threadId: threadId,
-          timestamp: new Date().toISOString(),
-          sender: "current_user", // 임시
-        }),
-      });
-
-      console.log("메시지 전송 완료:", text);
-
-      // 성공 후 페이지 새로고침
-      window.location.reload();
-    } catch (error) {
-      console.error("API 전송 실패:", error);
-    } finally {
-      setSending(false);
-    }
-  };
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    sendMessage(message);
+
+    const text = message.trim();
+    const hasContent = text || selectedImages.length > 0;
+
+    if (!hasContent || disabled) {
+      return;
+    }
+
+    onSendMessage(text, selectedImages);
+    setMessage("");
+    setSelectedImages([]);
+  };
+
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    setSelectedImages((prev) => [...prev, ...files]);
+  };
+
+  const removeImage = (index: number) => {
+    setSelectedImages((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e as React.FormEvent);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4 p-3 border-t bg-gray-50">
-      <Field orientation="horizontal">
-        <FieldContent className="flex-1">
-          <Input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="메시지를 입력하세요..."
-            disabled={sending}
-          />
-        </FieldContent>
+    <div className="border-t bg-gray-50 p-4">
+      {/* 이미지 미리보기 */}
+      {selectedImages.length > 0 && (
+        <ImagePreview
+          images={selectedImages}
+          onRemoveImage={removeImage}
+          className="mb-3"
+        />
+      )}
+
+      <form onSubmit={handleSubmit} className="flex gap-2">
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageSelect}
+          className="hidden"
+          disabled={disabled}
+        />
+
+        <Button
+          type="button"
+          onClick={handleImageClick}
+          disabled={disabled}
+          variant="outline"
+          size="icon"
+          className="shrink-0"
+        >
+          📷
+        </Button>
+
+        <Input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          disabled={disabled}
+          className="flex-1"
+        />
+
         <Button
           type="submit"
-          disabled={sending || !message.trim()}
-          variant="default"
-          size="default"
+          disabled={
+            disabled || (!message.trim() && selectedImages.length === 0)
+          }
         >
-          {sending ? "전송 중..." : "전송"}
+          Send
         </Button>
-      </Field>
-    </form>
+      </form>
+    </div>
   );
 }

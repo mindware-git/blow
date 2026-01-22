@@ -6,6 +6,7 @@ import { SimplePostCard } from "@/components/simple-post-card";
 import { PostPublic } from "@/types";
 
 import { getProfileById } from "@/lib/user";
+import { getImageUrl } from "@/lib/image-url";
 import { notFound } from "next/navigation";
 
 export default async function MyProfilePage() {
@@ -88,7 +89,7 @@ export default async function MyProfilePage() {
         <header className="flex items-center space-x-8 mb-8">
           <Avatar className="w-32 h-32">
             <AvatarImage
-              src={profile.avatar || session.user.image || ""}
+              src={getImageUrl(profile.avatar || session.user.image || "/static/images/originals/default_avatar.png")}
               alt={"User"}
             />
             <AvatarFallback>{"U".substring(0, 2).toUpperCase()}</AvatarFallback>

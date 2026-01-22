@@ -2,7 +2,7 @@
 
 import { type Client, formDataBodySerializer, type Options as Options2, type TDataShape } from './client';
 import { client } from './client.gen';
-import type { CreateChatChatsPostData, CreateChatChatsPostErrors, CreateChatChatsPostResponses, CreateCommentCommentsPostData, CreateCommentCommentsPostErrors, CreateCommentCommentsPostResponses, CreateMessageMessagesPostData, CreateMessageMessagesPostErrors, CreateMessageMessagesPostResponses, CreatePostPostsPostData, CreatePostPostsPostErrors, CreatePostPostsPostResponses, CreateProfileProfilesPostData, CreateProfileProfilesPostErrors, CreateProfileProfilesPostResponses, DeleteCommentCommentsCommentIdDeleteData, DeleteCommentCommentsCommentIdDeleteErrors, DeleteCommentCommentsCommentIdDeleteResponses, DeleteProfileProfilesProfileIdDeleteData, DeleteProfileProfilesProfileIdDeleteErrors, DeleteProfileProfilesProfileIdDeleteResponses, GoogleCallbackAuthCallbackGooglePostData, GoogleCallbackAuthCallbackGooglePostErrors, GoogleCallbackAuthCallbackGooglePostResponses, ReadChatChatsChatIdGetData, ReadChatChatsChatIdGetErrors, ReadChatChatsChatIdGetResponses, ReadChatMessagesChatsChatIdMessagesGetData, ReadChatMessagesChatsChatIdMessagesGetErrors, ReadChatMessagesChatsChatIdMessagesGetResponses, ReadChatsChatsGetData, ReadChatsChatsGetErrors, ReadChatsChatsGetResponses, ReadCommentCommentsCommentIdGetData, ReadCommentCommentsCommentIdGetErrors, ReadCommentCommentsCommentIdGetResponses, ReadCommentsForPostCommentsPostPostIdGetData, ReadCommentsForPostCommentsPostPostIdGetErrors, ReadCommentsForPostCommentsPostPostIdGetResponses, ReadMessagesMessagesGetData, ReadMessagesMessagesGetErrors, ReadMessagesMessagesGetResponses, ReadPostPostsPostIdGetData, ReadPostPostsPostIdGetErrors, ReadPostPostsPostIdGetResponses, ReadPostsPostsGetData, ReadPostsPostsGetErrors, ReadPostsPostsGetResponses, ReadProfilePostsProfilesProfileIdPostsGetData, ReadProfilePostsProfilesProfileIdPostsGetErrors, ReadProfilePostsProfilesProfileIdPostsGetResponses, ReadProfileProfilesProfileIdGetData, ReadProfileProfilesProfileIdGetErrors, ReadProfileProfilesProfileIdGetResponses, ReadProfilesProfilesGetData, ReadProfilesProfilesGetErrors, ReadProfilesProfilesGetResponses, ReadUserByNameUsersNameGetData, ReadUserByNameUsersNameGetErrors, ReadUserByNameUsersNameGetResponses, UpdateProfileProfilesProfileIdPatchData, UpdateProfileProfilesProfileIdPatchErrors, UpdateProfileProfilesProfileIdPatchResponses } from './types.gen';
+import type { CreateChatChatsPostData, CreateChatChatsPostErrors, CreateChatChatsPostResponses, CreateCommentCommentsPostData, CreateCommentCommentsPostErrors, CreateCommentCommentsPostResponses, CreateMessageMessagesPostData, CreateMessageMessagesPostErrors, CreateMessageMessagesPostResponses, CreatePostPostsPostData, CreatePostPostsPostErrors, CreatePostPostsPostResponses, CreateProfileProfilesPostData, CreateProfileProfilesPostErrors, CreateProfileProfilesPostResponses, DeleteCommentCommentsCommentIdDeleteData, DeleteCommentCommentsCommentIdDeleteErrors, DeleteCommentCommentsCommentIdDeleteResponses, DeleteProfileProfilesProfileIdDeleteData, DeleteProfileProfilesProfileIdDeleteErrors, DeleteProfileProfilesProfileIdDeleteResponses, GetMediaMediaMediaIdGetData, GetMediaMediaMediaIdGetErrors, GetMediaMediaMediaIdGetResponses, GoogleCallbackAuthCallbackGooglePostData, GoogleCallbackAuthCallbackGooglePostErrors, GoogleCallbackAuthCallbackGooglePostResponses, ListMediaMediaGetData, ListMediaMediaGetErrors, ListMediaMediaGetResponses, ReadChatChatsChatIdGetData, ReadChatChatsChatIdGetErrors, ReadChatChatsChatIdGetResponses, ReadChatMessagesChatsChatIdMessagesGetData, ReadChatMessagesChatsChatIdMessagesGetErrors, ReadChatMessagesChatsChatIdMessagesGetResponses, ReadChatsChatsGetData, ReadChatsChatsGetErrors, ReadChatsChatsGetResponses, ReadCommentCommentsCommentIdGetData, ReadCommentCommentsCommentIdGetErrors, ReadCommentCommentsCommentIdGetResponses, ReadCommentsForPostCommentsPostPostIdGetData, ReadCommentsForPostCommentsPostPostIdGetErrors, ReadCommentsForPostCommentsPostPostIdGetResponses, ReadMessagesMessagesGetData, ReadMessagesMessagesGetErrors, ReadMessagesMessagesGetResponses, ReadPostPostsPostIdGetData, ReadPostPostsPostIdGetErrors, ReadPostPostsPostIdGetResponses, ReadPostsPostsGetData, ReadPostsPostsGetErrors, ReadPostsPostsGetResponses, ReadProfilePostsProfilesProfileIdPostsGetData, ReadProfilePostsProfilesProfileIdPostsGetErrors, ReadProfilePostsProfilesProfileIdPostsGetResponses, ReadProfileProfilesProfileIdGetData, ReadProfileProfilesProfileIdGetErrors, ReadProfileProfilesProfileIdGetResponses, ReadProfilesProfilesGetData, ReadProfilesProfilesGetErrors, ReadProfilesProfilesGetResponses, ReadUserByNameUsersNameGetData, ReadUserByNameUsersNameGetErrors, ReadUserByNameUsersNameGetResponses, UpdateProfileAvatarProfilesProfileIdAvatarPatchData, UpdateProfileAvatarProfilesProfileIdAvatarPatchErrors, UpdateProfileAvatarProfilesProfileIdAvatarPatchResponses, UpdateProfileProfilesProfileIdPatchData, UpdateProfileProfilesProfileIdPatchErrors, UpdateProfileProfilesProfileIdPatchResponses, UploadImagesUploadImagesPostData, UploadImagesUploadImagesPostErrors, UploadImagesUploadImagesPostResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -73,6 +73,21 @@ export const readUserByNameUsersNameGet = <ThrowOnError extends boolean = false>
  * Read Profile Posts
  */
 export const readProfilePostsProfilesProfileIdPostsGet = <ThrowOnError extends boolean = false>(options: Options<ReadProfilePostsProfilesProfileIdPostsGetData, ThrowOnError>) => (options.client ?? client).get<ReadProfilePostsProfilesProfileIdPostsGetResponses, ReadProfilePostsProfilesProfileIdPostsGetErrors, ThrowOnError>({ url: '/profiles/{profile_id}/posts/', ...options });
+
+/**
+ * Update Profile Avatar
+ *
+ * Update a profile's avatar image.
+ */
+export const updateProfileAvatarProfilesProfileIdAvatarPatch = <ThrowOnError extends boolean = false>(options: Options<UpdateProfileAvatarProfilesProfileIdAvatarPatchData, ThrowOnError>) => (options.client ?? client).patch<UpdateProfileAvatarProfilesProfileIdAvatarPatchResponses, UpdateProfileAvatarProfilesProfileIdAvatarPatchErrors, ThrowOnError>({
+    ...formDataBodySerializer,
+    url: '/profiles/{profile_id}/avatar',
+    ...options,
+    headers: {
+        'Content-Type': null,
+        ...options.headers
+    }
+});
 
 /**
  * Read Chats
@@ -167,3 +182,34 @@ export const readCommentCommentsCommentIdGet = <ThrowOnError extends boolean = f
  * Read Comments For Post
  */
 export const readCommentsForPostCommentsPostPostIdGet = <ThrowOnError extends boolean = false>(options: Options<ReadCommentsForPostCommentsPostPostIdGetData, ThrowOnError>) => (options.client ?? client).get<ReadCommentsForPostCommentsPostPostIdGetResponses, ReadCommentsForPostCommentsPostPostIdGetErrors, ThrowOnError>({ url: '/comments/post/{post_id}', ...options });
+
+/**
+ * Upload Images
+ *
+ * 범용 이미지 업로드 API
+ * - object_type: "post", "comment", "message" 등
+ * - object_id: 해당 객체의 UUID
+ */
+export const uploadImagesUploadImagesPost = <ThrowOnError extends boolean = false>(options: Options<UploadImagesUploadImagesPostData, ThrowOnError>) => (options.client ?? client).post<UploadImagesUploadImagesPostResponses, UploadImagesUploadImagesPostErrors, ThrowOnError>({
+    ...formDataBodySerializer,
+    url: '/upload/images/',
+    ...options,
+    headers: {
+        'Content-Type': null,
+        ...options.headers
+    }
+});
+
+/**
+ * Get Media
+ *
+ * 미디어 파일 정보 조회
+ */
+export const getMediaMediaMediaIdGet = <ThrowOnError extends boolean = false>(options: Options<GetMediaMediaMediaIdGetData, ThrowOnError>) => (options.client ?? client).get<GetMediaMediaMediaIdGetResponses, GetMediaMediaMediaIdGetErrors, ThrowOnError>({ url: '/media/{media_id}', ...options });
+
+/**
+ * List Media
+ *
+ * 미디어 파일 목록 조회
+ */
+export const listMediaMediaGet = <ThrowOnError extends boolean = false>(options?: Options<ListMediaMediaGetData, ThrowOnError>) => (options?.client ?? client).get<ListMediaMediaGetResponses, ListMediaMediaGetErrors, ThrowOnError>({ url: '/media/', ...options });
