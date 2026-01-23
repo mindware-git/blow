@@ -23,21 +23,21 @@ The frontend is a [Next.js](https://nextjs.org/) application.
 ### Testing
 - **Run tests:** `bun test`
 
----
+### Deploy
+sudo nano /etc/nginx/sites-available/bapi
 
-## Backend (FastAPI)
+server {
+    listen 80;
+    server_name blow.mindware.kr;
 
-The backend is a [FastAPI](https://fastapi.tiangolo.com/) application located in the `/api` directory.
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
 
-### Setup
-- **Install dependencies:** `uv sync`
-  - This command should be run from within the `api` directory.
-
-### Development
-- **Start dev server:** `uvicorn main:app --reload`
-  - This command should be run from within the `api` directory.
-  - The server will be available at [http://localhost:8000](http://localhost:8000).
-
-### Testing
-- **Run tests:** `uv run pytest`
-  - This command should be run from within the `api` directory.
+sudo ln -s /etc/nginx/sites-available/blow /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
