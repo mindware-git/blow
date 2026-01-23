@@ -1,6 +1,13 @@
 import Image from "next/image";
 import { PostPublic } from "@/types";
 import { getImageUrl } from "@/lib/image-url";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default async function PostPage({
   params,
@@ -35,15 +42,27 @@ export default async function PostPage({
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-md overflow-hidden">
         {/* 이미지 표시 */}
-        <div className="relative w-full h-96">
-          <Image
-            src={getImageUrl(post.media_urls?.[0] || "/placeholder.png")}
-            alt="Post image"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
+        {post.media_urls && post.media_urls.length > 0 && (
+          <Carousel className="w-full max-w-lg mx-auto">
+            <CarouselContent>
+              {post.media_urls.map((url, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative aspect-square">
+                    <Image
+                      src={getImageUrl(url || "/placeholder.png")}
+                      alt={`Post image ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        )}
 
         {/* 게시물 정보 표시 */}
         <div className="p-6">
